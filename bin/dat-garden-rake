@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+function assertVersion (version, minMajor, minMinor) {
+  const parts = /^v(\d+).(\d+)/g.exec(version)
+  const major = parseInt(parts[1], 10)
+  const minor = parseInt(parts[2], 10)
+  if (major < minMajor || (major === minMajor && minor < minMinor)) {
+    throw new Error(`Node version ${minMajor}.${minMinor} required.`)
+  }
+}
+
+assertVersion(process.version, 18, 3)
+
+const { parseArgs } = require('node:util')
+
+const controller = new AbortController()
+process.on('SIGINT', () => controller.abort())
+
+const { values } = parseArgs({
+  options: {
+    help: {
+      type: 'boolean',
+      short: 'h'
+    },
+    clear: {
+      type: 'boolean',
+      short: 'c'
+    },
+    out: {
+      type: 'string',
+      short: 'o'
+    },
+    blessed: {
+      type: 'string',
+      short: 'b'
+    },
+    concurrency: {
+      type: 'string',
+      short: 'x'
+    },
+    'max-retries': {
+      type: 'string',
+      short: 'r'
+    },
+    state: {
+      type: 'string',
+      short: 's'
+    }
+  },
+  strict: true
+})
+if (values.help) {
+  console.log(`dat-garden-rake [...options]
+
+--clear, -c ......... clears the current state
+--help, -h .......... show this help
+--out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
+--state, -s ......... state folder (default=./state)
+--blessed, -b ....... blessed file location (default=./blessed.json)
+--concurrency, -x ... max concurrent processes (default=10)
+--max-retries, -r ... how often to retry failed tasks
+
+Note: to get the full output you need to supply a GITHUB_TOKEN and GITLAB_TOKEN to access the respective
+API.
+`)
+  process.exit()
+}
+const options = {
+  state: values.state ?? 'state',
+  clear: values.clear ?? false,
+  outFolder: values.out ?? './out',
+  blessedFile: values.blessed ?? './blessed.json',
+  concurrency: values.concurrency ? parseInt(values.concurrency) : 10,
+  signal: controller.signal
+}
+import('../index.mjs').then(({ scrape }) => scrape(options))
