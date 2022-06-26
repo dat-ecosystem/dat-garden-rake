@@ -1,6 +1,7 @@
 /* global Headers */
 import { normalizePeople } from '../lib/people.mjs'
-import { addURLToError, getGithubRepo, getGitlabRepo, getMaybe, githubURL, gitlabURL, RateLimitError } from '../lib/util.mjs'
+import { getGithubRepo, getGitlabRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
+import { addURLToError, getMaybe, RateLimitError } from '../lib/util.mjs'
 
 export async function processRepoContributors (api, task) {
   const { repoURL } = task
