@@ -12,6 +12,7 @@ async function exportJSON (api, cwd) {
   await fs.mkdir(cwd, { recursive: true })
   await writeCollection(path.join(cwd, 'packages.json'), api.package)
   await writeCollection(path.join(cwd, 'repos.json'), api.repo)
+  await writeCollection(path.join(cwd, 'errors.json'), api.tasks)
 }
 
 async function writeCollection (path, collection) {

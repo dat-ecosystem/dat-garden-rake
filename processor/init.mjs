@@ -10,8 +10,8 @@ export async function processInit (api, task) {
     if (typeof entry !== 'object') {
       throw new Error(`blessed.json entry#${index} is not an object ${entry} [${typeof entry}]`)
     }
-    if (typeof entry.npm !== 'string') {
-      throw new Error(`blessed.json entry#${index} is not a npm repository`)
+    if (typeof entry.npm !== 'string' && typeof entry.repoURL !== 'string') {
+      throw new Error(`blessed.json entry#${index} is not an object of type { npm: 'name' [, version: '1.1.0' ] } or { repoURL: '...' }: ${JSON.stringify(entry, null, 2)}`)
     }
     return api.createTask({ type: 'blessed', ...entry })
   })

@@ -1,12 +1,10 @@
 import { loadNPM, npmURL } from '../lib/npm.mjs'
-import { loadRepoDependents } from '../lib/repo.mjs'
-import { githubURL, gitlabURL } from '../lib/util.mjs'
+import { loadRepoDependents, githubURL, gitlabURL } from '../lib/repo.mjs'
 
 export async function processDependentInfo (api, task) {
   const dependent = task.dependent
   if (dependent.startsWith(npmURL)) {
-    const name = dependent.substring(npmURL.length)
-    const { batch, pkg } = await loadNPM(api, name, 'latest')
+    const { batch, pkg } = await loadNPM(api, dependent)
     if (pkg.repository) {
       batch.push(api.createTask({ type: 'dependent-info', dependent: pkg.repository }))
     }

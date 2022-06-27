@@ -1,13 +1,16 @@
-import { createDependencyTasks, loadNPM } from '../lib/npm.mjs'
+import { createDependencyTasks, loadNPM, normalizeNPM } from '../lib/npm.mjs'
 
 export async function processBlessed (api, task) {
-  if (task.npm) {
-    const { batch, pkg } = await loadNPM(api, task.npm, task.version)
+  const { npm, version, repoURL } = task
+  if (npm) {
+    const { batch, pkg } = await loadNPM(api, await normalizeNPM(api, npm, version ?? '*'))
     return [
       ...batch,
       api.createTask({ type: 'repo-dependents', repoURL: pkg.repository }),
       ...createDependencyTasks(api, pkg)
     ]
   }
-  throw new Error(`Unsupported blessed task ${JSON.stringify(task)}`)
+  return [
+    api.createTask({ type: 'repo-dependents', repoURL })
+  ]
 }

@@ -1,3 +1,12 @@
 [
-  { "npm": "hypercore", "version": "latest" }
+  { "npm": "hypercore", "version": "*" },
+  { "repoURL": "git+https://github.com/hypercore-protocol/hypercore-next" },
+  { "npm": "@hyperswarm/dht", "version": "*" },
+  { "npm": "hyperswarm", "version": "*" },
+  { "npm": "@hyperswarm/dht-relay", "version": "*" },
+  { "npm": "@hyperswarm/secret-stream", "version": "*" },
+  { "npm": "hypercore-strong-link", "version": "*" },
+  { "npm": "hyperdrive", "version": "*" },
+  { "npm": "hyperbee", "version": "*" },
+  { "npm": "autobase", "version": "*" }
 ]

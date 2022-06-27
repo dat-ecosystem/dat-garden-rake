@@ -5,6 +5,7 @@ import { processFinalize } from './finalize.mjs'
 import { processInit } from './init.mjs'
 import { processRepoContributors } from './repo-contributors.mjs'
 import { processRepoDependents } from './repo-dependents.mjs'
+import { processRepoOwner } from './repo-owner.mjs'
 
 export const processors = {
   blessed: processBlessed,
@@ -13,5 +14,6 @@ export const processors = {
   'dependent-info': processDependentInfo,
   finalize: processFinalize,
   'repo-contributors': processRepoContributors,
-  'repo-dependents': processRepoDependents
+  'repo-dependents': processRepoDependents,
+  'repo-owner': processRepoOwner
 }
