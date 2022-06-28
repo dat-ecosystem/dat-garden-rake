@@ -1,19 +1,24 @@
-import { processBlessed } from './blessed.mjs'
-import { processDependency } from './dependency.mjs'
-import { processDependentInfo } from './dependent-info.mjs'
-import { processFinalize } from './finalize.mjs'
-import { processInit } from './init.mjs'
-import { processRepoContributors } from './repo-contributors.mjs'
-import { processRepoDependents } from './repo-dependents.mjs'
-import { processRepoOwner } from './repo-owner.mjs'
+import { blessed } from './blessed.mjs'
+import { dependency } from './dependency.mjs'
+import { dependentInfo } from './dependent-info.mjs'
+import { finalize } from './finalize.mjs'
+import { init } from './init.mjs'
+import { npmPackage } from './npm-package.mjs'
+import { repoContributors } from './repo-contributors.mjs'
+import { repoDependents } from './repo-dependents.mjs'
+import { repoOwner } from './repo-owner.mjs'
 
-export const processors = {
-  blessed: processBlessed,
-  init: processInit,
-  dependency: processDependency,
-  'dependent-info': processDependentInfo,
-  finalize: processFinalize,
-  'repo-contributors': processRepoContributors,
-  'repo-dependents': processRepoDependents,
-  'repo-owner': processRepoOwner
-}
+export const processors = [
+  blessed,
+  init,
+  dependency,
+  dependentInfo,
+  finalize,
+  npmPackage,
+  repoContributors,
+  repoDependents,
+  repoOwner
+].reduce((all, processor) => {
+  all[processor.type] = processor.process
+  return all
+}, {})

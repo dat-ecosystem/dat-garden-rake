@@ -2,10 +2,15 @@ import fs from 'fs/promises'
 import path from 'path'
 import { addURLToError, collect } from '../lib/util.mjs'
 
-export async function processFinalize (api, task) {
-  const startTime = (await api.meta.get('start')).replace(/:/g, '').replace(/\./g, '_')
-  await exportJSON(api, path.join(task.options.outFolder, startTime))
-  return []
+export const finalize = {
+  type: 'final',
+  async process (api, task) {
+    const startTime = (await api.meta.get('start')).replace(/:/g, '').replace(/\./g, '_')
+    await exportJSON(api, path.join(task.options.outFolder, startTime))
+    return {
+      batch: []
+    }
+  }
 }
 
 async function exportJSON (api, cwd) {

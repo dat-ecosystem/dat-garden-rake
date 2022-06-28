@@ -7,9 +7,20 @@ export async function scrape (opts = {}) {
   if (!signal) {
     signal = (new AbortController()).signal
   }
+  const log = (...args) => {
+    console.log('[SCRAPER]', ...args)
+  }
   const db = new Level(state ?? 'state')
-  if (opts.clear) {
+  if (opts.reset) {
+    log('DELETING ALL STATE DATA')
     await db.clear()
+    log('deleted.')
+  } else if (opts.restart) {
+    log('Clearing tasks and meta information')
+    await db.sublevel('tasks').clear()
+    await db.sublevel('meta').clear()
+    await db.sublevel('task-for-resource').clear()
+    log('cleared.')
   }
   await runTasks({
     db,
@@ -28,8 +39,6 @@ export async function scrape (opts = {}) {
         packageVersion: db.sublevel('package-version', { valueEncoding: 'json' })
       }
     },
-    log (...args) {
-      console.log('[SCRAPER]', ...args)
-    }
+    log
   })
 }

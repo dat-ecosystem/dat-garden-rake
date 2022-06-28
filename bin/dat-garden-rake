@@ -21,9 +21,11 @@ const { values } = parseArgs({
       type: 'boolean',
       short: 'h'
     },
-    clear: {
-      type: 'boolean',
-      short: 'c'
+    reset: {
+      type: 'boolean'
+    },
+    restart: {
+      type: 'boolean'
     },
     out: {
       type: 'string',
@@ -51,7 +53,7 @@ const { values } = parseArgs({
 if (values.help) {
   console.log(`dat-garden-rake [...options]
 
---clear, -c ......... clears the current state
+--reset ............. clears ALL current data!
 --help, -h .......... show this help
 --out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
 --state, -s ......... state folder (default=./state)
@@ -66,7 +68,8 @@ API.
 }
 const options = {
   state: values.state ?? 'state',
-  clear: values.clear ?? false,
+  reset: values.reset ?? false,
+  restart: values.restart ?? false,
   outFolder: values.out ?? './out',
   blessedFile: values.blessed ?? './blessed.json',
   concurrency: values.concurrency ? parseInt(values.concurrency) : 10,

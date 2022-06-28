@@ -1,31 +1,37 @@
 import { normalizePeople } from '../lib/people.mjs'
 import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
-import { getMaybe } from '../lib/util.mjs'
+import { resourceTaskProcessor } from '../lib/util.mjs'
+import { repoOwner } from './repo-owner.mjs'
 
-export async function processRepoContributors (api, task) {
-  const { repoURL } = task
-  const key = `${repoURL}#contributors`
-  let contributors = await getMaybe(api.repo, key)
-  if (contributors) {
-    return []
+export const repoContributors = resourceTaskProcessor(
+  'repo-contributors',
+  api => api.repo,
+  (_api, type, { repoURL }) => ({
+    key: `${repoURL}#contributors`,
+    task: { type, repoURL }
+  }),
+  async (api, _db, { repoURL }) => {
+    let contributors
+    if (repoURL.startsWith(gitlabURL)) {
+      contributors = await loadGitlabContributors(repoURL)
+    }
+    if (repoURL.startsWith(githubURL)) {
+      contributors = await loadGithubContributors(repoURL)
+    }
+    if (!contributors) {
+      throw new Error(`Can not load repo contributors for ${repoURL}`)
+    }
+    contributors = normalizePeople({
+      contributor: contributors
+    })
+    return {
+      value: contributors,
+      batch: [
+        ...await repoOwner.createTask(api, repoURL)
+      ]
+    }
   }
-  if (repoURL.startsWith(gitlabURL)) {
-    contributors = await loadGitlabContributors(repoURL)
-  }
-  if (repoURL.startsWith(githubURL)) {
-    contributors = await loadGithubContributors(repoURL)
-  }
-  if (!contributors) {
-    throw new Error(`Can not load repo contributors for ${repoURL}`)
-  }
-  contributors = normalizePeople({
-    contributor: contributors
-  })
-  return [
-    { type: 'put', sublevel: api.repo, key, value: contributors },
-    api.createTask({ type: 'repo-owner', repoURL })
-  ]
-}
+)
 
 async function loadGitlabContributors (repoURL) {
   const glRepo = getGitlabRepo(repoURL)

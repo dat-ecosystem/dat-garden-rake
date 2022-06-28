@@ -1,17 +1,26 @@
-import { loadNPM, npmURL } from '../lib/npm.mjs'
-import { loadRepoDependents, githubURL, gitlabURL } from '../lib/repo.mjs'
+import { npmURL } from '../lib/npm.mjs'
+import { isRepo } from '../lib/repo.mjs'
+import { taskProcessor } from '../lib/util.mjs'
+import { npmPackage } from './npm-package.mjs'
+import { repoDependents } from './repo-dependents.mjs'
 
-export async function processDependentInfo (api, task) {
-  const dependent = task.dependent
-  if (dependent.startsWith(npmURL)) {
-    const { batch, pkg } = await loadNPM(api, dependent)
-    if (pkg.repository) {
-      batch.push(api.createTask({ type: 'dependent-info', dependent: pkg.repository }))
+export const dependentInfo = taskProcessor(
+  'dependent-info',
+  (_api, type, { dependent }) => ({
+    key: dependent,
+    task: { type, dependent }
+  }),
+  async (api, { dependent }) => {
+    if (dependent.startsWith(npmURL)) {
+      const { batch, value: pkg } = await npmPackage.process(api, { url: dependent })
+      if (pkg.repository) {
+        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository }))
+      }
+      return batch
     }
-    return batch
+    if (isRepo(dependent)) {
+      return await repoDependents.createTask(api, { repoURL: dependent })
+    }
+    throw new Error(`Unsupported dependent-info: ${dependent}`)
   }
-  if (dependent && (dependent.startsWith(githubURL) || dependent.startsWith(gitlabURL))) {
-    return await loadRepoDependents(api, dependent)
-  }
-  throw new Error(`Unsupported dependent-info: ${JSON.stringify(task)}`)
-}
+)

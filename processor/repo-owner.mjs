@@ -1,26 +1,30 @@
 import { fetchGithubAPI, fetchGitlabAPI, getGithubOwner, getGitlabRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
-import { getMaybe } from '../lib/util.mjs'
+import { resourceTaskProcessor } from '../lib/util.mjs'
 
-export async function processRepoOwner (api, task) {
-  const { repoURL } = task
-  const key = `${repoURL}#owner`
-  let owner = await getMaybe(api.repo, key)
-  if (owner) {
-    return []
+export const repoOwner = resourceTaskProcessor(
+  'repo-owner',
+  api => api.repo,
+  (_api, type, { repoURL }) => ({
+    key: `${repoURL}#owner`,
+    task: { type, repoURL }
+  }),
+  async (_api, _db, { repoURL }) => {
+    let owner
+    if (repoURL.startsWith(gitlabURL)) {
+      owner = await loadGitlabOwner(repoURL)
+    }
+    if (repoURL.startsWith(githubURL)) {
+      owner = await loadGithubOwner(repoURL)
+    }
+    if (!owner) {
+      throw new Error(`Can not load repo contributors for ${repoURL}`)
+    }
+    return {
+      value: owner,
+      batch: []
+    }
   }
-  if (repoURL.startsWith(gitlabURL)) {
-    owner = await loadGitlabOwner(repoURL)
-  }
-  if (repoURL.startsWith(githubURL)) {
-    owner = await loadGithubOwner(repoURL)
-  }
-  if (!owner) {
-    throw new Error(`Can not load repo contributors for ${repoURL}`)
-  }
-  return [
-    { type: 'put', sublevel: api.repo, key, value: owner }
-  ]
-}
+)
 
 async function loadGitlabOwner (repoURL) {
   const glRepo = getGitlabRepo(repoURL)
