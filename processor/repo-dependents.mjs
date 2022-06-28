@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom'
 import { normalizeNPM, npmURL } from '../lib/npm.mjs'
 import { getGithubRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
 import { RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
-import { npmPackage } from './npm-package.mjs'
+import { dependentInfo } from './dependent-info.mjs'
 import { repoOwner } from './repo-owner.mjs'
 
 export const repoDependents = resourceTaskProcessor(
@@ -27,7 +27,7 @@ export const repoDependents = resourceTaskProcessor(
     return {
       value: dependents,
       batch: [
-        ...await createDependentTasks(api, dependents),
+        ...await dependentInfo.createTasks(api, dependents.map(dependent => ({ dependent, depth: depth + 1 }))),
         ...await repoOwner.createTask(api, { repoURL })
       ]
     }
@@ -86,16 +86,4 @@ async function loadGithubDependentsPage (api, url, dependentSet) {
   if (next) {
     return next.getAttribute('href')
   }
-}
-
-async function createDependentTasks (api, dependents) {
-  const batch = []
-  for (const dependent of dependents) {
-    if (dependent.startsWith(npmURL)) {
-      batch.push(...await npmPackage.createTask(api, { url: dependent }))
-    } else if (dependent.startsWith(githubURL) || dependent.startsWith(gitlabURL)) {
-      batch.push(...await repoDependents.createTask(api, { repoURL: dependent }))
-    }
-  }
-  return batch
 }
