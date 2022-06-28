@@ -6,21 +6,22 @@ import { repoDependents } from './repo-dependents.mjs'
 
 export const dependentInfo = taskProcessor(
   'dependent-info',
-  (_api, type, { dependent }) => ({
-    key: dependent,
-    task: { type, dependent }
+  (_api, type, { dependent, depth }) => ({
+    key: JSON.stringify({ dependent, depth }),
+    task: { type, dependent, depth: depth || 0 }
   }),
-  async (api, { dependent }) => {
+  async (api, { dependent, depth }) => {
     if (dependent.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url: dependent })
       if (pkg.repository) {
-        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository }))
+        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository, depth: depth + 1 }))
       }
       return batch
     }
     if (isRepo(dependent)) {
-      return await repoDependents.createTask(api, { repoURL: dependent })
+      return await repoDependents.createTask(api, { repoURL: dependent, depth })
     }
-    throw new Error(`Unsupported dependent-info: ${dependent}`)
-  }
+    throw new Error(`Unsupported dependent-info: ${dependent} [depth=${depth}]`)
+  },
+  (api, task) => task.depth <= api.opts.maxDepth
 )

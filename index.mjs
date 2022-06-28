@@ -28,6 +28,7 @@ export async function scrape (opts = {}) {
     outFolder: './out',
     concurrency: 10,
     maxRetries: 2,
+    maxDepth: 10,
     signal,
     ...rest,
     processors,

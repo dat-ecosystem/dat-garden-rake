@@ -43,6 +43,10 @@ const { values } = parseArgs({
       type: 'string',
       short: 'r'
     },
+    'max-depth': {
+      type: 'boolean',
+      short: 'd'
+    },
     state: {
       type: 'string',
       short: 's'
@@ -60,6 +64,7 @@ if (values.help) {
 --blessed, -b ....... blessed file location (default=./blessed.json)
 --concurrency, -x ... max concurrent processes (default=10)
 --max-retries, -r ... how often to retry failed tasks
+--max-depth, -d ..... max depth of dependents to look up (default=10)
 
 Note: to get the full output you need to supply a GITHUB_TOKEN and GITLAB_TOKEN to access the respective
 API.

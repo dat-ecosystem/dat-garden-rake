@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom'
-import { normalizeNPM, npmURL } from '../lib/npm.mjs'
+import { normalizeNPM } from '../lib/npm.mjs'
 import { getGithubRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
 import { RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
 import { dependentInfo } from './dependent-info.mjs'
@@ -8,11 +8,11 @@ import { repoOwner } from './repo-owner.mjs'
 export const repoDependents = resourceTaskProcessor(
   'repo-dependents',
   api => api.repo,
-  (_api, type, { repoURL }) => ({
+  (_api, type, { repoURL, depth }) => ({
     key: `${repoURL}#dependents`,
-    task: { type, repoURL }
+    task: { type, repoURL, depth }
   }),
-  async (api, _db, { repoURL }) => {
+  async (api, _db, { repoURL, depth }) => {
     let dependents
     if (repoURL.startsWith(githubURL)) {
       dependents = await loadGithubDependents(api, repoURL)

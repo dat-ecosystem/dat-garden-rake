@@ -10,10 +10,9 @@ export const blessed = {
     if (npm) {
       const url = await normalizeDependency(api, npm, version ?? '*')
       const { batch, value: pkg } = await npmPackage.process(api, { url })
-      console.log({ pkg })
       batch.push(...await dependency.createTasks(api, pkg.dependencies))
       if (pkg.repository) {
-        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository }))
+        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository, depth: 1 }))
       }
       return {
         value: pkg,
@@ -21,7 +20,7 @@ export const blessed = {
       }
     } else {
       // TODO: This loads github dependencies but not yet deep dependencies
-      return await repoDependents.process(api, { repoURL })
+      return await repoDependents.process(api, { repoURL, depth: 0 })
     }
   }
 }
