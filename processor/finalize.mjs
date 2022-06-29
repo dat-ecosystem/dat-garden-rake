@@ -3,7 +3,7 @@ import path from 'path'
 import { addURLToError, collect } from '../lib/util.mjs'
 
 export const finalize = {
-  type: 'final',
+  type: 'finalize',
   async process (api, task) {
     const startTime = (await api.meta.get('start')).replace(/:/g, '').replace(/\./g, '_')
     await exportJSON(api, path.join(task.options.outFolder, startTime))
