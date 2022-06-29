@@ -27,6 +27,9 @@ const { values } = parseArgs({
     restart: {
       type: 'boolean'
     },
+    retry: {
+      type: 'boolean'
+    },
     out: {
       type: 'string',
       short: 'o'
@@ -59,6 +62,7 @@ if (values.help) {
 
 --reset ............. clears ALL current data!
 --restart ........... clears all tasks but keeps the data
+--retry ............. removes all errors from tasks
 --help, -h .......... show this help
 --out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
 --state, -s ......... state folder (default=./state)
@@ -76,6 +80,7 @@ const options = {
   state: values.state ?? 'state',
   reset: values.reset ?? false,
   restart: values.restart ?? false,
+  retry: values.retry ?? false,
   outFolder: values.out ?? './out',
   blessedFile: values.blessed ?? './blessed.json',
   concurrency: values.concurrency ? parseInt(values.concurrency) : 10,

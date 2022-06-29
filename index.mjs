@@ -21,6 +21,18 @@ export async function scrape (opts = {}) {
     await db.sublevel('meta').clear()
     await db.sublevel('task-for-resource').clear()
     log('cleared.')
+  } else if (opts.retry) {
+    log('Removing error state from tasks')
+    const batch = []
+    const tasks = db.sublevel('tasks', { valueEncoding: 'json' })
+    for await (const [key, task] of tasks.iterator()) {
+      if (task.errors) {
+        delete task.errors
+        batch.push({ type: 'put', sublevel: tasks, key, task })
+      }
+    }
+    await db.batch(batch)
+    log('all tasks error free')
   }
   await runTasks({
     db,
