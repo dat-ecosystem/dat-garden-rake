@@ -13,7 +13,6 @@ export const gitlabGroup = resourceTaskProcessor(
     const group = await fetchGitlabAPI(`groups/${encodeURIComponent(task.group)}`)
     return {
       value: {
-        type: 'gitlab',
         user: group.path_with_namespace,
         name: group.name,
         company: null,

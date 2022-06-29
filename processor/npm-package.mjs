@@ -13,10 +13,8 @@ export const npmPackage = resourceTaskProcessor(
   async (api, _db, { url }) => {
     const { name, version } = parseNpmUrl(url)
     api.log(`Loading NPM package ${name}@${version}`)
-    const pkg = await normalizePackage(api, version, await npmInfo(`${name}@${version}`, version))
-    const batch = [
-      { type: 'put', sublevel: api.package, key: url, value: pkg }
-    ]
+    const { value: pkg, batch } = await normalizePackage(api, version, await npmInfo(`${name}@${version}`, version))
+    batch.push({ type: 'put', sublevel: api.package, key: url, value: pkg })
     if (pkg.repository) {
       batch.push(
         ...await createRepoTasks(api, { repoURL: pkg.repository }),
@@ -31,29 +29,33 @@ export const npmPackage = resourceTaskProcessor(
 )
 
 async function normalizePackage (api, version, pkg) {
+  const { value: people, batch } = await normalizePeople(api, {
+    author: [{ npmFree: (pkg.author || '') }],
+    publishedBy: [{ npmLogin: pkg._npmUser }],
+    contributor: (pkg.contributors || []).map(contributor => ({ npmFree: contributor })),
+    maintainers: (pkg.maintainers || []).map(maintainer => ({ npmLogin: maintainer })),
+    users: Object.keys(pkg.users || {}).map(user => ({ npmLogin: user }))
+  })
   return {
-    name: pkg.name,
-    version,
-    description: pkg.description,
-    keywords: pkg.keywords,
-    homepage: pkg.homepage,
-    bugs: pkg.bugs?.url || pkg.bugs,
-    license: pkg.license,
-    time: pkg.time?.[version],
-    size: {
-      packed: pkg._contentLength || 0,
-      unpacked: pkg.dist?.unpackedSize || 0
+    value: {
+      name: pkg.name,
+      version,
+      description: pkg.description,
+      keywords: pkg.keywords,
+      homepage: pkg.homepage,
+      bugs: pkg.bugs?.url || pkg.bugs,
+      license: pkg.license,
+      time: pkg.time?.[version],
+      size: {
+        packed: pkg._contentLength || 0,
+        unpacked: pkg.dist?.unpackedSize || 0
+      },
+      people,
+      dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
+      funding: pkg.funding,
+      // Make sure that pkg.repository is a normalized string for future lookup
+      repository: normalizeRepository(pkg.repository)
     },
-    people: normalizePeople({
-      author: [{ npmFree: (pkg.author || '') }],
-      publishedBy: [{ npmLogin: pkg._npmUser }],
-      contributor: (pkg.contributors || []).map(contributor => ({ npmFree: contributor })),
-      maintainers: (pkg.maintainers || []).map(maintainer => ({ npmLogin: maintainer })),
-      users: Object.keys(pkg.users || {}).map(user => ({ npmLogin: user }))
-    }),
-    dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
-    funding: pkg.funding,
-    // Make sure that pkg.repository is a normalized string for future lookup
-    repository: normalizeRepository(pkg.repository)
+    batch
   }
 }

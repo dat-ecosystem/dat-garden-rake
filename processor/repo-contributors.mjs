@@ -20,13 +20,9 @@ export const repoContributors = resourceTaskProcessor(
     if (!contributors) {
       throw new Error(`Can not load repo contributors for ${repoURL}`)
     }
-    contributors = normalizePeople({
+    return await normalizePeople(api, {
       contributor: contributors
     })
-    return {
-      value: contributors,
-      batch: []
-    }
   }
 )
 
