@@ -23,5 +23,7 @@ export const dependentInfo = taskProcessor(
     }
     throw new Error(`Unsupported dependent-info: ${dependent} [depth=${depth}]`)
   },
-  (api, task) => task.depth <= api.opts.maxDepth
+  (api, task) => {
+    return task.depth <= api.opts.maxDepth && !task.dependent.startsWith('npm-unresolvable://')
+  }
 )
