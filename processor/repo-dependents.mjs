@@ -1,9 +1,8 @@
 import { JSDOM } from 'jsdom'
 import { normalizeNPM } from '../lib/npm.mjs'
-import { getGithubRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
+import { createRepoTasks, getGithubRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
 import { RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
 import { dependentInfo } from './dependent-info.mjs'
-import { repoOwner } from './repo-owner.mjs'
 
 export const repoDependents = resourceTaskProcessor(
   'repo-dependents',
@@ -28,7 +27,7 @@ export const repoDependents = resourceTaskProcessor(
       value: dependents,
       batch: [
         ...await dependentInfo.createTasks(api, dependents.map(dependent => ({ dependent, depth: depth + 1 }))),
-        ...await repoOwner.createTask(api, { repoURL })
+        ...await createRepoTasks(api, { repoURL })
       ]
     }
   }

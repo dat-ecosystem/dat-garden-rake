@@ -1,7 +1,6 @@
 import { normalizePeople } from '../lib/people.mjs'
 import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
 import { resourceTaskProcessor } from '../lib/util.mjs'
-import { repoOwner } from './repo-owner.mjs'
 
 export const repoContributors = resourceTaskProcessor(
   'repo-contributors',
@@ -26,9 +25,7 @@ export const repoContributors = resourceTaskProcessor(
     })
     return {
       value: contributors,
-      batch: [
-        ...await repoOwner.createTask(api, repoURL)
-      ]
+      batch: []
     }
   }
 )

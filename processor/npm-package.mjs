@@ -1,7 +1,7 @@
 import { normalizeDependencies, normalizeRepository, npmInfo, parseNpmUrl } from '../lib/npm.mjs'
 import { normalizePeople } from '../lib/people.mjs'
+import { createRepoTasks } from '../lib/repo.mjs'
 import { resourceTaskProcessor } from '../lib/util.mjs'
-import { repoContributors } from './repo-contributors.mjs'
 
 export const npmPackage = resourceTaskProcessor(
   'npm-package',
@@ -19,7 +19,7 @@ export const npmPackage = resourceTaskProcessor(
     ]
     if (pkg.repository) {
       batch.push(
-        ...await repoContributors.createTask(api, pkg.repository),
+        ...await createRepoTasks(api, { repoURL: pkg.repository }),
         { type: 'put', sublevel: api.repo, key: `${pkg.repository}#package+`, value: url }
       )
     }
