@@ -28,7 +28,7 @@ export async function scrape (opts = {}) {
     outFolder: './out',
     concurrency: 10,
     maxRetries: 2,
-    maxDepth: 10,
+    maxDepth: 5,
     signal,
     ...rest,
     processors,
@@ -37,6 +37,7 @@ export async function scrape (opts = {}) {
         ...api,
         package: db.sublevel('package', { valueEncoding: 'json' }),
         repo: db.sublevel('repo', { valueEncoding: 'json' }),
+        people: db.sublevel('people', { valueEncoding: 'json' }),
         packageVersion: db.sublevel('package-version', { valueEncoding: 'json' })
       }
     },

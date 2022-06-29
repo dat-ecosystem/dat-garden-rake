@@ -58,13 +58,14 @@ if (values.help) {
   console.log(`dat-garden-rake [...options]
 
 --reset ............. clears ALL current data!
+--restart ........... clears all tasks but keeps the data
 --help, -h .......... show this help
 --out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
 --state, -s ......... state folder (default=./state)
 --blessed, -b ....... blessed file location (default=./blessed.json)
 --concurrency, -x ... max concurrent processes (default=10)
 --max-retries, -r ... how often to retry failed tasks
---max-depth, -d ..... max depth of dependents to look up (default=10)
+--max-depth, -d ..... max depth of dependents to look up (default=5)
 
 Note: to get the full output you need to supply a GITHUB_TOKEN and GITLAB_TOKEN to access the respective
 API.
