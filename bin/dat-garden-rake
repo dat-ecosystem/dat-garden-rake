@@ -47,12 +47,21 @@ const { values } = parseArgs({
       short: 'r'
     },
     'max-depth': {
-      type: 'boolean',
+      type: 'string',
       short: 'd'
     },
     state: {
       type: 'string',
       short: 's'
+    },
+    cache: {
+      type: 'string'
+    },
+    'prefer-cache': {
+      type: 'boolean'
+    },
+    quiet: {
+      type: 'boolean'
     }
   },
   strict: true
@@ -66,21 +75,44 @@ if (values.help) {
 --help, -h .......... show this help
 --out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
 --state, -s ......... state folder (default=./state)
+--cache ............. cache folder (default=./cache)
+--prefer-cache ...... always use the cached data
 --blessed, -b ....... blessed file location (default=./blessed.json)
 --concurrency, -x ... max concurrent processes (default=10)
---max-retries, -r ... how often to retry failed tasks
+--max-retries, -r ... how often to retry failed tasks (default=2)
 --max-depth, -d ..... max depth of dependents to look up (default=5)
+--quiet ............. minimal output only.
 
 Note: to get the full output you need to supply a GITHUB_TOKEN and GITLAB_TOKEN to access the respective
 API.
 `)
   process.exit()
 }
+
+function coerceNumber (opt, fallback) {
+  if (!opt) {
+    return fallback
+  }
+  const num = parseInt(opt, 10)
+  if (isNaN(num)) {
+    return fallback
+  }
+  if (num.toString() === opt) {
+    return num
+  }
+  return fallback
+}
+
 const options = {
   state: values.state ?? 'state',
+  cache: values.cache ?? 'cache',
+  preferCache: values['prefer-cache'] ?? false,
   reset: values.reset ?? false,
   restart: values.restart ?? false,
   retry: values.retry ?? false,
+  quiet: values.quiet ?? false,
+  maxRetries: coerceNumber(values['max-retries'], 2),
+  maxDepth: coerceNumber(values['max-depth'], 5),
   outFolder: values.out ?? './out',
   blessedFile: values.blessed ?? './blessed.json',
   concurrency: values.concurrency ? parseInt(values.concurrency) : 10,

@@ -9,17 +9,17 @@ export const dependency = taskProcessor(
     key: dependency,
     task: { type, dependency }
   }),
-  async (api, { dependency }) => {
-    if (dependency.startsWith(npmURL)) {
-      const { batch, value: pkg } = await npmPackage.process(api, dependency)
-      batch.push(...await dependency.createTasks(api, pkg.dependency))
+  async (api, { dependency: url }) => {
+    if (url.startsWith(npmURL)) {
+      const { batch, value: pkg } = await npmPackage.process(api, { url })
+      batch.push(...await dependency.createTasks(api, pkg.dependencies.map(dependency => ({ dependency }))))
       return batch
     }
-    if (isRepo(dependency)) {
+    if (isRepo(url)) {
       return [
-        ...await createRepoTasks(api, { repoURL: dependency })
+        ...await createRepoTasks(api, { repoURL: url })
       ]
     }
-    throw new Error(`Unsupported dependency ${dependency}`)
+    throw new Error(`Unsupported dependency ${url}`)
   }
 )

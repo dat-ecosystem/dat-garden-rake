@@ -1,7 +1,7 @@
-import { fetchGitlabAPI, getGithubOwner, getGitlabRepo, githubURL, githubUserURL, gitlabGroupURL, gitlabURL } from '../lib/repo.mjs'
+import { githubUserURL, gitlabGroupURL } from '../lib/people.mjs'
+import { fetchGitlabAPI, getGithubOwner, getGitlabRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
 import { resourceTaskProcessor } from '../lib/util.mjs'
-import { githubUser } from './github-user.mjs'
-import { gitlabGroup } from './gitlab-group.mjs'
+import { person } from './person.mjs'
 
 export const repoOwner = resourceTaskProcessor(
   'repo-owner',
@@ -12,10 +12,10 @@ export const repoOwner = resourceTaskProcessor(
   }),
   async (api, _db, task) => {
     const { repoURL } = task
-    if (repoURL.startsWith(gitlabURL)) {
+    if (repoURL.startsWith(gitlabRepoURL)) {
       return await loadGitlabOwner(api, task)
     }
-    if (repoURL.startsWith(githubURL)) {
+    if (repoURL.startsWith(githubRepoURL)) {
       return await loadGithubOwner(api, task)
     }
     throw new Error(`Can not load repo contributors for ${repoURL}`)
@@ -25,26 +25,36 @@ export const repoOwner = resourceTaskProcessor(
 async function loadGitlabOwner (api, task) {
   const { repoURL } = task
   const glRepo = getGitlabRepo(repoURL)
-  const repo = await fetchGitlabAPI(`projects/${encodeURIComponent(glRepo)}`)
+  const repo = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}`)
   if (!repo.owner) {
-    return null
+    return {
+      value: '<unknown>',
+      batch: []
+    }
   }
-  const group = repo.owner.id
+  const groupId = repo.owner.id
+  // https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
+  const group = await fetchGitlabAPI(api, `groups/${encodeURIComponent(groupId)}`)
   return {
-    value: gitlabGroupURL(group),
-    batch: [
-      ...await gitlabGroup.createTask(api, { group })
-    ]
+    value: {
+      gitlab_url: gitlabGroupURL(groupId),
+      name: group.name,
+      description: group.description,
+      html_url: group.web_url,
+      avatar_url: group.avatar_url
+    },
+    batch: []
   }
 }
 
 async function loadGithubOwner (api, task) {
   const { repoURL } = task
   const login = getGithubOwner(repoURL)
+  const url = githubUserURL(login)
   return {
-    value: githubUserURL(login),
+    value: url,
     batch: [
-      ...await githubUser.createTask(api, { login })
+      ...await person.createTask(api, { url })
     ]
   }
 }

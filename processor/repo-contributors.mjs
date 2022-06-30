@@ -1,6 +1,8 @@
-import { normalizePeople } from '../lib/people.mjs'
-import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
-import { resourceTaskProcessor } from '../lib/util.mjs'
+import pMap from 'p-map'
+import { githubUserURL, gitlabUserURL, normalizeGitlabUser } from '../lib/people.mjs'
+import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
+import { getOrCreate, resourceTaskProcessor } from '../lib/util.mjs'
+import { person } from './person.mjs'
 
 export const repoContributors = resourceTaskProcessor(
   'repo-contributors',
@@ -9,31 +11,51 @@ export const repoContributors = resourceTaskProcessor(
     key: `${repoURL}#contributors`,
     task: { type, repoURL }
   }),
-  async (api, _db, { repoURL }) => {
-    let contributors
-    if (repoURL.startsWith(gitlabURL)) {
-      contributors = await loadGitlabContributors(repoURL)
+  async (api, _db, task) => {
+    const { repoURL } = task
+    if (repoURL.startsWith(gitlabRepoURL)) {
+      return await loadGitlabContributors(api, task, repoURL)
     }
-    if (repoURL.startsWith(githubURL)) {
-      contributors = await loadGithubContributors(repoURL)
+    if (repoURL.startsWith(githubRepoURL)) {
+      return await loadGithubContributors(api, repoURL)
     }
-    if (!contributors) {
-      throw new Error(`Can not load repo contributors for ${repoURL}`)
-    }
-    return await normalizePeople(api, {
-      contributor: contributors
-    })
+    throw new Error(`Can not load repo contributors for ${repoURL}`)
   }
 )
 
-async function loadGitlabContributors (repoURL) {
+async function loadGitlabContributors (api, task, repoURL) {
   const glRepo = getGitlabRepo(repoURL)
-  const members = await fetchGitlabAPI(`projects/${encodeURIComponent(glRepo)}/members/all`)
-  return members.map(member => ({ gitlab: member }))
+  // TODO: paging
+  // https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project
+  const members = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}/members/all?per_page=100&page=1`)
+  const result = {
+    value: [],
+    batch: []
+  }
+  await pMap(members, async member => {
+    const key = gitlabUserURL(member.username)
+    result.value.push({ person: key, tags: ['contributor'] })
+    result.batch.push(...(await getOrCreate(api, api.people, key, task, async () => {
+      return {
+        value: normalizeGitlabUser(member),
+        batch: []
+      }
+    })).batch)
+  }, { concurrency: 10 })
+  return result
 }
 
-async function loadGithubContributors (repoURL) {
+async function loadGithubContributors (api, repoURL) {
   const ghRepo = getGithubRepo(repoURL)
-  const contributors = await fetchGithubAPI(`repos/${ghRepo}/contributors`)
-  return contributors.map(contributor => ({ github: contributor }))
+  const contributors = await fetchGithubAPI(api, `repos/${ghRepo}/contributors`)
+  const result = {
+    value: [],
+    batch: []
+  }
+  for (const contributor of contributors) {
+    const url = githubUserURL(contributor.login)
+    result.value.push({ person: url, tags: ['contributor'] })
+    result.batch.push(...await person.createTask(api, { url }))
+  }
+  return result
 }

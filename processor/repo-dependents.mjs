@@ -1,22 +1,26 @@
-import { JSDOM } from 'jsdom'
 import { normalizeNPM } from '../lib/npm.mjs'
-import { createRepoTasks, getGithubRepo, githubURL, gitlabURL } from '../lib/repo.mjs'
-import { RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
+import { createRepoTasks, getGithubRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
+import { fetchJSDom, resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
 import { dependentInfo } from './dependent-info.mjs'
 
 export const repoDependents = resourceTaskProcessor(
   'repo-dependents',
   api => api.repo,
-  (_api, type, { repoURL, depth }) => ({
-    key: `${repoURL}#dependents`,
-    task: { type, repoURL, depth }
+  (_api, type, { repoURL, depth, pageId, page }) => ({
+    key: `${repoURL}#dependents+${pageId ?? 0}`,
+    task: { type, repoURL, depth: depth ?? 0, pageId, page }
   }),
-  async (api, _db, { repoURL, depth }) => {
+  async (api, _db, { repoURL, depth, page }) => {
     let dependents
-    if (repoURL.startsWith(githubURL)) {
-      dependents = await loadGithubDependents(api, repoURL)
+    const batch = []
+    if (repoURL.startsWith(githubRepoURL)) {
+      const github = await loadGithubDependents(api, repoURL, page)
+      dependents = github.dependents
+      if (github.page) {
+        batch.push(...await repoDependents.createTask(api, { repoURL, depth, pageId: timeRandomID(), page: github.page }))
+      }
     }
-    if (repoURL.startsWith(gitlabURL)) {
+    if (repoURL.startsWith(gitlabRepoURL)) {
       // Gitlab doesn't support this, but we store an empty array anyways
       dependents = []
     }
@@ -26,6 +30,7 @@ export const repoDependents = resourceTaskProcessor(
     return {
       value: dependents,
       batch: [
+        ...batch,
         ...await dependentInfo.createTasks(api, dependents.map(dependent => ({ dependent, depth: depth + 1 }))),
         ...await createRepoTasks(api, { repoURL })
       ]
@@ -33,49 +38,79 @@ export const repoDependents = resourceTaskProcessor(
   }
 )
 
-async function loadGithubDependents (api, repoURL) {
-  const ghRepo = getGithubRepo(repoURL)
-  const dependentSet = new Set()
-  let url = `https://github.com/${ghRepo}/network/dependents?dependent_type=PACKAGE`
-  while (url) {
-    if (api.signal.aborted) {
-      throw new Error('Aborted.')
-    }
-    const next = await loadGithubDependentsPage(api, url, dependentSet)
-    if (next === url) {
-      break
-    } else {
-      url = next
-    }
-  }
-  return Array.from(dependentSet)
+async function loadGithubDependents (api, repoURL, page) {
+  const url = page ?? `https://github.com/${getGithubRepo(repoURL)}/network/dependents?dependent_type=PACKAGE`
+  return await loadGithubDependentsPage(api, url)
 }
 
-async function loadGithubDependentsPage (api, url, dependentSet) {
-  const res = await fetch(url)
-  if (res.status === 429) {
-    const retryTime = parseInt(res.headers.get('retry-after'), 10) * 1000 + Date.now()
-    throw new RateLimitError(url, retryTime)
-  }
-  if (res.status !== 200) {
-    throw new Error(`HTTP STATUS=${res.status} while requesting repo.`)
-  }
-  const jsdom = new JSDOM(await res.text())
-  const document = jsdom.window.document
-  const el = document.getElementById('dependents')
+async function verifyGithubDependent (api, dependentURL, repoURL) {
+  //
+  // Github does occasionaly list dependents that have no relationship to
+  // a repository. In order to make sure that we don't accidentally catch a dependency
+  // we do the counter-check where we also look if the repository shows up
+  // as dependency of the dependent.
+  //
+  // Example of broken dependent/dependency:
+  // - https://github.com/hypercore-protocol/hypercore-streams/network/dependents?dependent_type=PACKAGE (npm-run-path listed)
+  //   (screenshot: https://i.gyazo.com/46028e8105763f5ade2e9582e712ddad.png)
+  // - https://github.com/sindresorhus/npm-run-path/network/dependencies (no hyperdrive-streams listed ?!)
+  //   (screenshot: https://i.gyazo.com/1f6b6333807ecf9b41528b44b54f4d65.png)
+  //
+  const ghRepo = getGithubRepo(dependentURL)
+  const url = `https://github.com/${ghRepo}/network/dependencies`
+  const jsdom = await fetchJSDom(api, url)
+  const { document } = jsdom.window
+  const el = document.getElementById('dependencies')
   if (!el) {
-    return
+    return false
+  }
+  if (findDependency(el, repoURL, url)) {
+    return true
+  }
+  for (const $more of el.querySelectorAll('#dependencies form')) {
+    const more = new URL(await $more.getAttribute('action'), url)
+    const res = await (more)
+    if (findDependency(res.window.document, repoURL, more)) {
+      return true
+    }
+  }
+  return false
+}
+
+function findDependency (el, repoURL, url) {
+  for (const $dependency of el.querySelectorAll('[data-octo-click="dep_graph_package"][data-hovercard-type="repository"]')) {
+    const found = `git+${new URL($dependency.getAttribute('href'), url).href}`
+    if (found === repoURL) {
+      return true
+    }
+  }
+  return false
+}
+
+async function loadGithubDependentsPage (api, url) {
+  const jsdom = await fetchJSDom(api, url)
+  const { document } = jsdom.window
+  const el = document.getElementById('dependents')
+  const result = {
+    dependents: [],
+    page: null
+  }
+  if (!el) {
+    return result
   }
   for (const $dependent of el.querySelectorAll('.Box-row')) {
     const span = $dependent.children[1]
     const isGHLink = span.getAttribute('data-repository-hovercards-enabled') === ''
     if (isGHLink) {
       const anchor = [...$dependent.querySelectorAll('a')].pop()
-      dependentSet.add(new URL(anchor.getAttribute('href'), githubURL).href)
+      const dependentURL = new URL(anchor.getAttribute('href'), githubRepoURL).href
+      if (await verifyGithubDependent(dependentURL, url)) {
+        result.dependents.push(dependentURL)
+      }
     } else {
       const text = span.textContent.trim()
       try {
-        dependentSet.add(await normalizeNPM(api, text, '*'))
+        result.dependents.push(await normalizeNPM(api, text, '*'))
       } catch (e) {
         api.log(`Unexpected node: ${text}: ${e.stack}`)
       }
@@ -83,6 +118,7 @@ async function loadGithubDependentsPage (api, url, dependentSet) {
   }
   const next = el.querySelector('.paginate-container a:nth-child(2)')
   if (next) {
-    return next.getAttribute('href')
+    result.page = next.getAttribute('href')
   }
+  return result
 }

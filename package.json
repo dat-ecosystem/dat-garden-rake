@@ -12,6 +12,8 @@
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "cache-control-parser": "^2.0.2",
+    "execa": "^6.1.0",
     "jsdom": "^19.0.0",
     "level": "^8.0.0",
     "lodash.mergewith": "^4.6.2",

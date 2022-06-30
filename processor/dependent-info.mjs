@@ -14,7 +14,7 @@ export const dependentInfo = taskProcessor(
     if (dependent.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url: dependent })
       if (pkg.repository) {
-        batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository, depth: depth + 1 }))
+        // batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository, depth: depth + 1 }))
       }
       return batch
     }

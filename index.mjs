@@ -3,13 +3,17 @@ import { processors } from './processor/index.mjs'
 import { runTasks } from './lib/task-queue.mjs'
 
 export async function scrape (opts = {}) {
-  let { state, signal, ...rest } = opts
+  let { state, cache, signal, ...rest } = opts
   if (!signal) {
     signal = (new AbortController()).signal
   }
   const log = (...args) => {
-    console.log('[SCRAPER]', ...args)
+    if (opts.quiet) {
+      process.stdout.write('.')
+    }
+    // console.log('[SCRAPER]', ...args)
   }
+  const cacheDb = new Level(cache ?? 'cache')
   const db = new Level(state ?? 'state')
   if (opts.reset) {
     log('DELETING ALL STATE DATA')
@@ -28,7 +32,7 @@ export async function scrape (opts = {}) {
     for await (const [key, task] of tasks.iterator()) {
       if (task.errors) {
         delete task.errors
-        batch.push({ type: 'put', sublevel: tasks, key, task })
+        batch.push({ type: 'put', sublevel: tasks, key, value: task })
       }
     }
     await db.batch(batch)
@@ -36,6 +40,8 @@ export async function scrape (opts = {}) {
   }
   await runTasks({
     db,
+    cacheDb,
+    preferCache: false,
     blessedFile: './blessed.json',
     outFolder: './out',
     concurrency: 10,
