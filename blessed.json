@@ -1,12 +1,12 @@
 [
-  { "npm": "hypercore", "version": "*" },
-  { "repoURL": "git+https://github.com/hypercore-protocol/hypercore-next" },
-  { "npm": "@hyperswarm/dht", "version": "*" },
-  { "npm": "hyperswarm", "version": "*" },
-  { "npm": "@hyperswarm/dht-relay", "version": "*" },
-  { "npm": "@hyperswarm/secret-stream", "version": "*" },
-  { "npm": "hypercore-strong-link", "version": "*" },
-  { "npm": "hyperdrive", "version": "*" },
-  { "npm": "hyperbee", "version": "*" },
-  { "npm": "autobase", "version": "*" }
+  "https://www.npmjs.com/package/hypercore",
+  "git+https://github.com/hypercore-protocol/hypercore-next",
+  "https://www.npmjs.com/package/@hyperswarm/dht",
+  "https://www.npmjs.com/package/hyperswarm",
+  "https://www.npmjs.com/package/@hyperswarm/dht-relay",
+  "https://www.npmjs.com/package/@hyperswarm/secret-stream",
+  "https://www.npmjs.com/package/hypercore-strong-link",
+  "https://www.npmjs.com/package/hyperdrive",
+  "https://www.npmjs.com/package/hyperbee",
+  "https://www.npmjs.com/package/autobase"
 ]
