@@ -23,7 +23,7 @@ export const blessed = {
     if (blessed.startsWith(githubRepoURL)) {
       return {
         batch: [
-          { type: 'put', sublevel: api.blessed, key: `blessed#${blessed}`, value: blessed },
+          { type: 'put', sublevel: api.meta, key: `blessed#${blessed}`, value: blessed },
           // ...await repoDependents.createTask(api, { repoURL, depth: 0 })
         ]
       }
