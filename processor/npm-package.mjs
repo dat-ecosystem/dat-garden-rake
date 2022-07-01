@@ -3,14 +3,16 @@ import { normalizePeople } from '../lib/people.mjs'
 import { createRepoTasks } from '../lib/repo.mjs'
 import { resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
 
-export const npmPackage = resourceTaskProcessor(
-  'npm-package',
-  api => api.packages,
-  (_api, type, { url }) => ({
-    key: url,
-    task: { type, url }
-  }),
-  async (api, _db, { url }) => {
+export const npmPackage = resourceTaskProcessor({
+  type: 'npm-package',
+  getDB: api => api.packages,
+  getTaskDef (_api, type, { url }) {
+    return {
+      key: url,
+      task: { type, url }
+    }
+  },
+  async create (api, _db, { url }) {
     const { name, version } = parseNpmUrl(url)
     api.log(`Loading NPM package ${name}@${version}`)
     const { value: pkg, batch } = await normalizePackage(api, version, await npmInfo(`${name}@${version}`, version))
@@ -26,7 +28,7 @@ export const npmPackage = resourceTaskProcessor(
       batch
     }
   }
-)
+})
 
 function toArray (input) {
   if (input === null || input === undefined) {

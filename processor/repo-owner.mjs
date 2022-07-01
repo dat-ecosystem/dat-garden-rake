@@ -3,14 +3,16 @@ import { fetchGitlabAPI, getGithubOwner, getGitlabRepo, githubRepoURL, gitlabRep
 import { resourceTaskProcessor } from '../lib/util.mjs'
 import { person } from './person.mjs'
 
-export const repoOwner = resourceTaskProcessor(
-  'repo-owner',
-  api => api.repos,
-  (_api, type, { repoURL }) => ({
-    key: `${repoURL}#owner`,
-    task: { type, repoURL }
-  }),
-  async (api, _db, task) => {
+export const repoOwner = resourceTaskProcessor({
+  type: 'repo-owner',
+  getDB: api => api.repos,
+  getTaskDef (_api, type, { repoURL }) {
+    return {
+      key: `${repoURL}#owner`,
+      task: { type, repoURL }
+    }
+  },
+  async create (api, _db, task) {
     const { repoURL } = task
     if (repoURL.startsWith(gitlabRepoURL)) {
       return await loadGitlabOwner(api, task)
@@ -20,7 +22,7 @@ export const repoOwner = resourceTaskProcessor(
     }
     throw new Error(`Can not load repo contributors for ${repoURL}`)
   }
-)
+})
 
 async function loadGitlabOwner (api, task) {
   const { repoURL } = task

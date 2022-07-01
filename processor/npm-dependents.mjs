@@ -6,14 +6,16 @@ function depUrl (name) {
   return `https://www.npmjs.com/browse/depended/${name}`
 }
 
-export const npmDependents = resourceTaskProcessor(
-  'npm-dependents',
-  api => api.packages,
-  (_api, type, { name, version, depth, page, url }) => ({
-    key: `${createNpmUrl(name, version)}#dependents+${page}`,
-    task: { type, name, version, depth: depth ?? 0, page: page ?? 0, url: url ?? depUrl(name) }
-  }),
-  async (api, _db, { name, version, depth, page, url }) => {
+export const npmDependents = resourceTaskProcessor({
+  type: 'npm-dependents',
+  getDB: api => api.packages,
+  getTaskDef (_api, type, { name, version, depth, page, url }) {
+    return {
+      key: `${createNpmUrl(name, version)}#dependents+${page}`,
+      task: { type, name, version, depth: depth ?? 0, page: page ?? 0, url: url ?? depUrl(name) }
+    }
+  },
+  async create (api, _db, { name, version, depth, page, url }) {
     const dom = await fetchJSDom(api, url)
     const { document } = dom.window
     const dependents = []
@@ -65,7 +67,7 @@ export const npmDependents = resourceTaskProcessor(
       batch
     }
   },
-  (api, task) => {
+  validateTask (api, task) {
     return task.depth <= api.opts.maxDepth
   }
-)
+})

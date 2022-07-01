@@ -4,14 +4,16 @@ import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubRep
 import { getOrCreate, resourceTaskProcessor } from '../lib/util.mjs'
 import { person } from './person.mjs'
 
-export const repoContributors = resourceTaskProcessor(
-  'repo-contributors',
-  api => api.repos,
-  (_api, type, { repoURL }) => ({
-    key: `${repoURL}#contributors`,
-    task: { type, repoURL }
-  }),
-  async (api, _db, task) => {
+export const repoContributors = resourceTaskProcessor({
+  type: 'repo-contributors',
+  getDB: api => api.repos,
+  getTaskDef (_api, type, { repoURL }) {
+    return {
+      key: `${repoURL}#contributors`,
+      task: { type, repoURL }
+    }
+  },
+  async create (api, _db, task) {
     const { repoURL } = task
     if (repoURL.startsWith(gitlabRepoURL)) {
       return await loadGitlabContributors(api, task, repoURL)
@@ -21,7 +23,7 @@ export const repoContributors = resourceTaskProcessor(
     }
     throw new Error(`Can not load repo contributors for ${repoURL}`)
   }
-)
+})
 
 async function loadGitlabContributors (api, task, repoURL) {
   const glRepo = getGitlabRepo(repoURL)

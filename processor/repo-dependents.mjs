@@ -3,14 +3,16 @@ import { createRepoTasks, getGithubRepo, githubRepoURL, gitlabRepoURL } from '..
 import { fetchJSDom, resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
 import { dependentInfo } from './dependent-info.mjs'
 
-export const repoDependents = resourceTaskProcessor(
-  'repo-dependents',
-  api => api.repos,
-  (_api, type, { repoURL, depth, pageId, page }) => ({
-    key: `${repoURL}#dependents+${pageId ?? 0}`,
-    task: { type, repoURL, depth: depth ?? 0, pageId, page }
-  }),
-  async (api, _db, { repoURL, depth, page }) => {
+export const repoDependents = resourceTaskProcessor({
+  type: 'repo-dependents',
+  getDB: api => api.repos,
+  getTaskDef (_api, type, { repoURL, depth, pageId, page }) {
+    return {
+      key: `${repoURL}#dependents+${pageId ?? 0}`,
+      task: { type, repoURL, depth: depth ?? 0, pageId, page }
+    }
+  },
+  async create (api, _db, { repoURL, depth, page }) {
     let dependents
     const batch = []
     if (repoURL.startsWith(githubRepoURL)) {
@@ -36,7 +38,7 @@ export const repoDependents = resourceTaskProcessor(
       ]
     }
   }
-)
+})
 
 async function loadGithubDependents (api, repoURL, page) {
   const url = page ?? `https://github.com/${getGithubRepo(repoURL)}/network/dependents?dependent_type=PACKAGE`

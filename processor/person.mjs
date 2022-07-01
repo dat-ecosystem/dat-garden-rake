@@ -2,14 +2,16 @@ import { isGithubUser, isGitlabUser, isNpmUser, normalizeGitlabUser, parseGithub
 import { fetchGithubAPI, fetchGitlabAPI } from '../lib/repo.mjs'
 import { addURLToError, createRateLimiter, fetchJSDom, predictableObj, RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
 
-export const person = resourceTaskProcessor(
-  'person',
-  api => api.people,
-  (_api, type, { url }) => ({
-    key: url,
-    task: { type, url }
-  }),
-  async (api, _db, { url }) => {
+export const person = resourceTaskProcessor({
+  type: 'person',
+  getDB: api => api.people,
+  getTaskDef (_api, type, { url }) {
+    return {
+      key: url,
+      task: { type, url }
+    }
+  },
+  async create (api, _db, { url }) {
     if (isGithubUser(url)) {
       return await fetchGithubUser(api, url)
     }
@@ -21,7 +23,7 @@ export const person = resourceTaskProcessor(
     }
     throw new Error(`Unsupported person to look up: ${url}`)
   }
-)
+})
 
 async function fetchGithubUser (api, url) {
   const login = parseGithubUser(url)
