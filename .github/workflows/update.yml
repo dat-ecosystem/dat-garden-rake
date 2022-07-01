@@ -1,0 +1,51 @@
+name: Data Update
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '0 8 * * *'
+
+permissions: 
+  contents: write
+
+concurrency: one
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - uses: martinheidegger/cache@v3.0.5
+      with:
+        path: |
+          cache
+          state
+        key: cache
+        always-save: true
+    - run: npm i
+    - continue-on-error: true
+      run: du -hc -d 0 cache
+    - continue-on-error: true
+      timeout-minutes: 350
+      run: |
+        node bin/dat-garden-rake \
+          --prefer-cache \
+          --max-depth=20 \
+          --skip-times \
+          --out-mode=override \
+          --github=${{ secrets.GH_TOKEN }} \
+          --gitlab=${{ secrets.GL_TOKEN }}
+
+    - continue-on-error: true
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        git-config-name: Dat Ecosystem (gh-actions)
+        git-config-email: dat-ecosystem@protonmail.com
+        branch: gh-pages
+        folder: out
+
