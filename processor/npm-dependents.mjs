@@ -8,7 +8,7 @@ function depUrl (name) {
 
 export const npmDependents = resourceTaskProcessor(
   'npm-dependents',
-  api => api.package,
+  api => api.packages,
   (_api, type, { name, version, depth, page, url }) => ({
     key: `${createNpmUrl(name, version)}#dependents+${page}`,
     task: { type, name, version, depth: depth ?? 0, page: page ?? 0, url: url ?? depUrl(name) }

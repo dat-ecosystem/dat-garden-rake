@@ -53,8 +53,8 @@ export async function scrape (opts = {}) {
     extendAPI (db, api) {
       return {
         ...api,
-        package: db.sublevel('package', { valueEncoding: 'json' }),
-        repo: db.sublevel('repo', { valueEncoding: 'json' }),
+        packages: db.sublevel('packages', { valueEncoding: 'json' }),
+        repos: db.sublevel('repos', { valueEncoding: 'json' }),
         people: db.sublevel('people', { valueEncoding: 'json' })
       }
     },

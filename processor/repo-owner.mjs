@@ -5,7 +5,7 @@ import { person } from './person.mjs'
 
 export const repoOwner = resourceTaskProcessor(
   'repo-owner',
-  api => api.repo,
+  api => api.repos,
   (_api, type, { repoURL }) => ({
     key: `${repoURL}#owner`,
     task: { type, repoURL }

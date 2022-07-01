@@ -5,7 +5,7 @@ import { dependentInfo } from './dependent-info.mjs'
 
 export const repoDependents = resourceTaskProcessor(
   'repo-dependents',
-  api => api.repo,
+  api => api.repos,
   (_api, type, { repoURL, depth, pageId, page }) => ({
     key: `${repoURL}#dependents+${pageId ?? 0}`,
     task: { type, repoURL, depth: depth ?? 0, pageId, page }

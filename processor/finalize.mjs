@@ -39,9 +39,9 @@ async function exportJSON (api, cwd, task) {
   const raw = path.join(cwd, 'raw')
   await fs.mkdir(raw)
   await writeJSON(path.join(raw, 'errors.json'), extractErrorTasks(await collect(api.tasks)))
-  await writeJSON(path.join(raw, 'packages.json'), await collect(api.package))
+  await writeJSON(path.join(raw, 'packages.json'), await collect(api.packages))
   await writeJSON(path.join(raw, 'people.json'), await collect(api.people))
-  await writeJSON(path.join(raw, 'repos.json'), cleanRepos(await collect(api.repo)))
+  await writeJSON(path.join(raw, 'repos.json'), cleanRepos(await collect(api.repos)))
   await writeJSON(path.join(cwd, 'index.json'), predictableObj({
     ...await collect(api.meta),
     exported: new Date().toISOString(),

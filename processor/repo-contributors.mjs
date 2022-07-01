@@ -6,7 +6,7 @@ import { person } from './person.mjs'
 
 export const repoContributors = resourceTaskProcessor(
   'repo-contributors',
-  api => api.repo,
+  api => api.repos,
   (_api, type, { repoURL }) => ({
     key: `${repoURL}#contributors`,
     task: { type, repoURL }

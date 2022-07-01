@@ -5,7 +5,7 @@ import { resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
 
 export const npmPackage = resourceTaskProcessor(
   'npm-package',
-  api => api.package,
+  api => api.packages,
   (_api, type, { url }) => ({
     key: url,
     task: { type, url }
@@ -14,11 +14,11 @@ export const npmPackage = resourceTaskProcessor(
     const { name, version } = parseNpmUrl(url)
     api.log(`Loading NPM package ${name}@${version}`)
     const { value: pkg, batch } = await normalizePackage(api, version, await npmInfo(`${name}@${version}`, version))
-    batch.push({ type: 'put', sublevel: api.package, key: url, value: pkg })
+    batch.push({ type: 'put', sublevel: api.packages, key: url, value: pkg })
     if (pkg.repository) {
       batch.push(
         ...await createRepoTasks(api, { repoURL: pkg.repository }),
-        { type: 'put', sublevel: api.repo, key: `${pkg.repository}#package+${timeRandomID()}`, value: url }
+        { type: 'put', sublevel: api.repos, key: `${pkg.repository}#package+${timeRandomID()}`, value: url }
       )
     }
     return {
