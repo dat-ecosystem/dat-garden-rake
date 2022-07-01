@@ -18,18 +18,22 @@ $ dat-garden-rake [...options]
 --restart ........... clears all tasks but keeps the data
 --retry ............. removes all errors from tasks
 --help, -h .......... show this help
---out, -o ........... output folder (will create sub-directory with timestamp from start) (default=./out)
+--out, -o ........... output folder (default=./out)
 --state, -s ......... state folder (default=./state)
 --cache ............. cache folder (default=./cache)
---prefer-cache ...... always use the cached data
+--prefer-cache ...... always use the cached data (recommended for development)
 --blessed, -b ....... blessed file location (default=./blessed.json)
 --concurrency, -x ... max concurrent processes (default=10)
 --max-retries, -r ... how often to retry failed tasks (default=2)
 --max-depth, -d ..... max depth of dependents to look up (default=5)
 --quiet ............. minimal output only.
+--skip-times ........ skip times in output (good for updating git data)
+--out-mode .......... mode how the output should be written to a folder:
+    'history' (default) ... for creating a new folder and maintaining an index.json (good for dev)
+    'override' ............ to write the current version to the folder as-is (good for deploy)
 
-Note: to get the full output you need to supply a GITHUB_TOKEN and GITLAB_TOKEN to access the respective
-API.
+--github ............ Github token, falls back to GITHUB_TOKEN environment variable
+--gitlab ............ Gitlab token, falls back to GITLAB_TOKEN environment variable
 ```
 
 ## File Structure

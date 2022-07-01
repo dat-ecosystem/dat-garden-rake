@@ -71,6 +71,9 @@ const { values } = parseArgs({
     },
     gitlab: {
       type: 'string'
+    },
+    'skip-times': {
+      type: 'boolean'
     }
   },
   strict: true
@@ -91,6 +94,7 @@ if (values.help) {
 --max-retries, -r ... how often to retry failed tasks (default=2)
 --max-depth, -d ..... max depth of dependents to look up (default=5)
 --quiet ............. minimal output only.
+--skip-times ........ skip times in output (good for updating git data)
 --out-mode .......... mode how the output should be written to a folder:
     'history' (default) ... for creating a new folder and maintaining an index.json (good for dev)
     'override' ............ to write the current version to the folder as-is (good for deploy)
@@ -130,6 +134,7 @@ const options = {
   blessedFile: values.blessed ?? './blessed.json',
   concurrency: values.concurrency ? parseInt(values.concurrency) : 10,
   signal: controller.signal,
+  skipTimes: values['skip-times'] ?? false,
   token: {
     github: values.github ?? process.env.GITHUB_TOKEN,
     gitlab: values.gitlab ?? process.env.GITLAB_TOKEN

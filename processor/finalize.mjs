@@ -9,7 +9,7 @@ export const finalize = {
     const subDir = cleanDate(await api.meta.get('start'))
     const isHistory = api.opts.outMode === 'history'
     const exportPath = isHistory ? path.join(task.options.outFolder, subDir) : task.options.outFolder
-    await exportJSON(api, exportPath)
+    await exportJSON(api, exportPath, api.opts)
     if (isHistory) {
       await updateIndex(task.options.outFolder, path.join(subDir, 'index.json'))
     }
@@ -38,7 +38,7 @@ function cleanDate (date) {
   return String(date).replace(/:/g, '').replace(/\./g, '_')
 }
 
-async function exportJSON (api, cwd) {
+async function exportJSON (api, cwd, opts) {
   const raw = path.join(cwd, 'raw')
   await fs.mkdir(raw, { recursive: true })
   await writeJSON(path.join(raw, 'errors.json'), extractErrorTasks(await collect(api.tasks)))
@@ -55,7 +55,7 @@ async function exportJSON (api, cwd) {
   await writeJSON(path.join(cwd, 'projects.json'), projects)
   await writeJSON(path.join(cwd, 'valuenetwork.json'), valueNetwork)
 
-  await writeJSON(path.join(cwd, 'index.json'), predictableObj({
+  const index = {
     ...await collect(api.meta),
     exported: new Date().toISOString(),
     files: {
@@ -68,7 +68,13 @@ async function exportJSON (api, cwd) {
       'raw/repos.json': 'Repository related information collected during the run',
       'valuenetwork.json': 'Relationships between projects, other projects and organizations'
     }
-  }))
+  }
+  if (opts.skipTimes) {
+    delete index.exported
+    delete index.lastModified
+    delete index.start
+  }
+  await writeJSON(path.join(cwd, 'index.json'), predictableObj(index))
 }
 
 async function collect (db) {
