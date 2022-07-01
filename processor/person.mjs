@@ -91,7 +91,7 @@ async function fetchNpmUser (api, url) {
   return {
     value: {
       name,
-      npm: url,
+      npm_url: url,
       github_url: githubUrl,
       twitter_url: twitterUrl,
       avatar_url: avatar ? new URL(avatar, url).href : undefined
