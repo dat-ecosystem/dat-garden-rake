@@ -35,39 +35,43 @@ API.
 ## File Structure
 
 ```
-├─╴ index.mjs ............. Entry point, Kicks off the journey!
-├─╴ blessed.json .......... Start-file containing all the projects we want to scrape
+├─╴ index.mjs ................ Entry point, Kicks off the journey!
+├─╴ blessed.json ............. Start-file containing all the projects we want to scrape
 │
 ├─┬ bin
-│ └─╴ dat-garden-rake ..... binary, contains all npm process dependencies
+│ └─╴ dat-garden-rake ........ binary, contains all npm process dependencies
 │
-├─┬ cache ................. (git-ignored) defaut cached responses
+├─┬ cache .................... (git-ignored) defaut cached responses
 │ └─╴ <level-db>
 │ 
 ├─┬ lib
-│ ├─╴ npm.mjs ............. Utils for different NPM-tasks
-│ ├─╴ people.mjs .......... Utils for collecting people related to packages/repos
-│ ├─╴ repo.mjs ............ Utils for different Repository-tasks
-│ ├─╴ task-queue.mjs ...... [CORE] Multi-purpose, leveldb based task processor!
-│ └─╴ util.mjs ............ general purpose functions that have no externalities
+│ ├─╴ npm.mjs ................ Utils for different NPM-tasks
+│ ├─╴ people.mjs ............. Utils for collecting people related to packages/repos
+│ ├─╴ repo.mjs ............... Utils for different Repository-tasks
+│ ├─╴ reduce.mjs ............. Reduce function to be used in the the finalize task
+│ ├─╴ task-queue.mjs ......... [CORE] Multi-purpose, leveldb based task processor!
+│ └─╴ util.mjs ............... general purpose functions that have no externalities
 │
-├─┬ out ................... (git-ignored) default output responses
-│ ├─╴ index.json .......... Lookup for the latest run and a history of previous runs.
+├─┬ out ...................... (git-ignored) default output responses
+│ ├─╴ index.json ............. Lookup for the latest run and a history of previous runs.
 │ └─┬ <start-time>
-│   ├─╴ index.json ........ Information about the run (start, blessed input, etc.)
+│   ├─╴ index.json ........... Information about the run (start, blessed input, etc.)
+│   ├─╴ organizations.json ...  
+│   ├─╴ projects.json ........
+│   ├─╴ valuenetwork.json ....
 │   └─┬ raw
-│     ├─╴ errors.json ..... Errors that occurred during the run.
-│     ├─╴ packages.json ... NPM package related information collected during the run
-│     ├─╴ people.json ..... Lookup table of organizations or individuals linked in packages/repos
-│     └─╴ repos.json ...... Repository related information collected during the run
+│     ├─╴ errors.json ........ Errors that occurred during the run.
+│     ├─╴ packages.json ...... NPM package related information collected during the run
+│     ├─╴ people.json ........ Lookup table of organizations or individuals linked in packages/repos
+│     └─╴ repos.json ......... Repository related information collected during the run
 │
 ├─┬ processor
-│ ├─╴ index.mjs ........... Defines all the process-types 
-│ ├─╴ init.mjs ............ Init task that is run at the start of the journey!
-│ ├─╴ finalize.mjs ........ Task run at the end of the journey. This is always run!
-│ └─╴ <task>.mjs .......... Other tasks used during execution, linked in index.mjs
+│ ├─╴ index.mjs .............. Defines all the process-types 
+│ ├─╴ init.mjs ............... Init task that is run at the start of the journey!
+│ ├─╴ finalize.mjs ........... Task run at the end of the journey. This is always run!
+│ └─╴ <task>.mjs ............. Other tasks used during execution, linked in index.mjs
 │ 
-└─┬ state ................. (git-ignored) default state information for the current run
+└─┬ state .................... (git-ignored) default state information for the current run
   └─╴ <level-db>
 ```
 

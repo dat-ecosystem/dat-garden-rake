@@ -1,5 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
+import { reduceRawData } from '../lib/reduce.mjs'
 import { addURLToError, predictableObj } from '../lib/util.mjs'
 
 export const finalize = {
@@ -35,18 +36,30 @@ function cleanDate (date) {
 }
 
 async function exportJSON (api, cwd, task) {
-  await fs.mkdir(cwd, { recursive: true })
   const raw = path.join(cwd, 'raw')
-  await fs.mkdir(raw)
+  await fs.mkdir(raw, { recursive: true })
   await writeJSON(path.join(raw, 'errors.json'), extractErrorTasks(await collect(api.tasks)))
-  await writeJSON(path.join(raw, 'packages.json'), await collect(api.packages))
-  await writeJSON(path.join(raw, 'people.json'), await collect(api.people))
-  await writeJSON(path.join(raw, 'repos.json'), cleanRepos(await collect(api.repos)))
+  const [packages, repos, people] = await Promise.all([
+    collect(api.packages),
+    collect(api.repos).then(cleanRepos),
+    collect(api.people)
+  ])
+  await writeJSON(path.join(raw, 'packages.json'), packages)
+  await writeJSON(path.join(raw, 'repos.json'), repos)
+  await writeJSON(path.join(raw, 'people.json'), people)
+  const { organizations, projects, valueNetwork } = reduceRawData({ packages, repos, people })
+  await writeJSON(path.join(cwd, 'organizations.json'), organizations)
+  await writeJSON(path.join(cwd, 'projects.json'), projects)
+  await writeJSON(path.join(cwd, 'valunetwork.json'), valueNetwork)
+
   await writeJSON(path.join(cwd, 'index.json'), predictableObj({
     ...await collect(api.meta),
     exported: new Date().toISOString(),
     files: {
       'index.json': 'this file',
+      'organizations.json': 'all users/organizations found for projects',
+      'projects.json': 'all projects identified',
+      'valuenetwork.json': 'relatioships of the project',
       'raw/errors.json': 'tasks had an error while execution',
       'raw/packages.json': 'all npm-package information',
       'raw/people.json': 'all people linked in repos/packages/people',
