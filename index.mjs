@@ -38,6 +38,12 @@ export async function scrape (opts = {}) {
     await db.batch(batch)
     log('all tasks error free')
   }
+  if (opts.token?.gitlab) {
+    throw new Error('Gitlab token missing! Did you set the GITLAB_TOKEN environment variable?')
+  }
+  if (opts.token?.github) {
+    throw new Error('Github token missing! Did you set the GITLAB_TOKEN environment variable?')
+  }
   await runTasks({
     db,
     cacheDb,

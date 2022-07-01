@@ -116,6 +116,10 @@ const options = {
   outFolder: values.out ?? './out',
   blessedFile: values.blessed ?? './blessed.json',
   concurrency: values.concurrency ? parseInt(values.concurrency) : 10,
-  signal: controller.signal
+  signal: controller.signal,
+  token: {
+    github: process.env.GITHUB_TOKEN,
+    gitlab: process.env.GITLAB_TOKEN
+  }
 }
 import('../index.mjs').then(({ scrape }) => scrape(options))
