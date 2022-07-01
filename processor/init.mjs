@@ -1,11 +1,22 @@
 import { execa } from 'execa'
 import fs from 'fs/promises'
-import pkg from '../package.json' assert { type: 'json' }
+import { addURLToError } from '../lib/util.mjs'
+
+const pkgURL = new URL('../package.json', import.meta.url)
 
 export const init = {
   type: 'init',
   async process (api, task) {
-    const raw = await fs.readFile(task.options.blessedFile, 'utf-8')
+    const [raw, pkgRaw] = await Promise.all([
+      fs.readFile(task.options.blessedFile, 'utf-8').catch(err => { throw addURLToError(task.options.blesseFile, err) }),
+      fs.readFile(pkgURL, 'utf-8').catch(err => { throw addURLToError(pkgURL, err) })
+    ])
+    let pkg
+    try {
+      pkg = JSON.parse(pkgRaw)
+    } catch (err) {
+      throw addURLToError(pkgURL.href, err)
+    }
     const blessed = JSON.parse(raw)
     if (!Array.isArray(blessed)) {
       throw new Error('blessed.json expect to contain an array')
