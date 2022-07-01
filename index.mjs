@@ -55,8 +55,7 @@ export async function scrape (opts = {}) {
         ...api,
         package: db.sublevel('package', { valueEncoding: 'json' }),
         repo: db.sublevel('repo', { valueEncoding: 'json' }),
-        people: db.sublevel('people', { valueEncoding: 'json' }),
-        packageVersion: db.sublevel('package-version', { valueEncoding: 'json' })
+        people: db.sublevel('people', { valueEncoding: 'json' })
       }
     },
     log
