@@ -53,7 +53,7 @@ async function exportJSON (api, cwd) {
   const { organizations, projects, valueNetwork } = reduceRawData({ packages, repos, people })
   await writeJSON(path.join(cwd, 'organizations.json'), organizations)
   await writeJSON(path.join(cwd, 'projects.json'), projects)
-  await writeJSON(path.join(cwd, 'valunetwork.json'), valueNetwork)
+  await writeJSON(path.join(cwd, 'valuenetwork.json'), valueNetwork)
 
   await writeJSON(path.join(cwd, 'index.json'), predictableObj({
     ...await collect(api.meta),
