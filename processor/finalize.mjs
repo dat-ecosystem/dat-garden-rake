@@ -56,14 +56,14 @@ async function exportJSON (api, cwd, task) {
     ...await collect(api.meta),
     exported: new Date().toISOString(),
     files: {
-      'index.json': 'this file',
-      'organizations.json': 'all users/organizations found for projects',
-      'projects.json': 'all projects identified',
-      'valuenetwork.json': 'relatioships of the project',
-      'raw/errors.json': 'tasks had an error while execution',
-      'raw/packages.json': 'all npm-package information',
-      'raw/people.json': 'all people linked in repos/packages/people',
-      'raw/repos.json': 'all repository related information'
+      'index.json': '(this file) Information about the run (start, blessed input, etc.)',
+      'organizations.json': 'All users/organizations found for projects (combined/normalized)',
+      'projects.json': 'All projects (repos or npm packages) found',
+      'raw/errors.json': 'Errors that occurred during the run',
+      'raw/packages.json': 'NPM package related information collected during the run',
+      'raw/people.json': 'Lookup table of organizations or individuals linked in packages/repos',
+      'raw/repos.json': 'Repository related information collected during the run',
+      'valuenetwork.json': 'Relationships between projects, other projects and organizations'
     }
   }))
 }

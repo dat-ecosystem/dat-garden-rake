@@ -43,7 +43,7 @@ API.
 │
 ├─┬ cache .................... (git-ignored) defaut cached responses
 │ └─╴ <level-db>
-│ 
+│
 ├─┬ lib
 │ ├─╴ npm.mjs ................ Utils for different NPM-tasks
 │ ├─╴ people.mjs ............. Utils for collecting people related to packages/repos
@@ -54,23 +54,26 @@ API.
 │
 ├─┬ out ...................... (git-ignored) default output responses
 │ ├─╴ index.json ............. Lookup for the latest run and a history of previous runs.
+│ │
 │ └─┬ <start-time>
 │   ├─╴ index.json ........... Information about the run (start, blessed input, etc.)
-│   ├─╴ organizations.json ...  
-│   ├─╴ projects.json ........
-│   ├─╴ valuenetwork.json ....
-│   └─┬ raw
-│     ├─╴ errors.json ........ Errors that occurred during the run.
-│     ├─╴ packages.json ...... NPM package related information collected during the run
-│     ├─╴ people.json ........ Lookup table of organizations or individuals linked in packages/repos
-│     └─╴ repos.json ......... Repository related information collected during the run
+│   ├─╴ organizations.json ... All users/organizations found for projects (combined/normalized)
+│   ├─╴ projects.json ........ All projects (repos or npm packages) found
+│   │
+│   ├─┬ raw
+│   │ ├─╴ errors.json ........ Errors that occurred during the run
+│   │ ├─╴ packages.json ...... NPM package related information collected during the run
+│   │ ├─╴ people.json ........ Lookup table of organizations or individuals linked in packages/repos
+│   │ └─╴ repos.json ......... Repository related information collected during the run
+│   │
+│   └─╴ valuenetwork.json .... Relationships between projects, other projects and organizations
 │
 ├─┬ processor
 │ ├─╴ index.mjs .............. Defines all the process-types 
 │ ├─╴ init.mjs ............... Init task that is run at the start of the journey!
 │ ├─╴ finalize.mjs ........... Task run at the end of the journey. This is always run!
 │ └─╴ <task>.mjs ............. Other tasks used during execution, linked in index.mjs
-│ 
+│
 └─┬ state .................... (git-ignored) default state information for the current run
   └─╴ <level-db>
 ```
