@@ -131,7 +131,6 @@ async function writeJSON (path, obj) {
     const json = JSON.stringify(obj, null, 2)
     await fs.writeFile(path, json)
   } catch (err) {
-    console.log(obj)
     throw addURLToError(path, err)
   }
 }
