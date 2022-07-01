@@ -44,6 +44,10 @@ export async function scrape (opts = {}) {
   if (!opts.token?.github) {
     throw new Error('Github token missing! Did you set the GITLAB_TOKEN environment variable?')
   }
+  const outModes = ['history', 'override']
+  if (!outModes.includes(opts.outMode)) {
+    throw new Error(`Unsupported --out-mode=${opts.outMode}, suppoorted modes are: ${outModes.join(', ')}`)
+  }
   await runTasks({
     db,
     cacheDb,

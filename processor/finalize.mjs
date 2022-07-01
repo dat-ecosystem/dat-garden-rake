@@ -7,9 +7,12 @@ export const finalize = {
   type: 'finalize',
   async process (api, task) {
     const subDir = cleanDate(await api.meta.get('start'))
-    const exportPath = path.join(task.options.outFolder, subDir)
-    await exportJSON(api, exportPath, task)
-    await updateIndex(task.options.outFolder, path.join(subDir, 'index.json'))
+    const isHistory = api.opts.outMode === 'history'
+    const exportPath = isHistory ? path.join(task.options.outFolder, subDir) : task.options.outFolder
+    await exportJSON(api, exportPath)
+    if (isHistory) {
+      await updateIndex(task.options.outFolder, path.join(subDir, 'index.json'))
+    }
     return {
       batch: []
     }
@@ -35,7 +38,7 @@ function cleanDate (date) {
   return String(date).replace(/:/g, '').replace(/\./g, '_')
 }
 
-async function exportJSON (api, cwd, task) {
+async function exportJSON (api, cwd) {
   const raw = path.join(cwd, 'raw')
   await fs.mkdir(raw, { recursive: true })
   await writeJSON(path.join(raw, 'errors.json'), extractErrorTasks(await collect(api.tasks)))
