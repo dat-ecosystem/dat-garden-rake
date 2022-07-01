@@ -110,16 +110,16 @@ function extractErrorTasks (tasks) {
 }
 
 function cleanRepos (repos) {
-  for (const value of Object.values(repos)) {
-    const owner = value.owner
+  for (const repo of Object.values(repos)) {
+    const owner = repo.owner
     let people = []
-    const contributors = value.contributors
+    const contributors = repo.contributors
     if (contributors) {
-      delete value.contributors
+      delete repo.contributors
       people = contributors
     }
     if (owner) {
-      delete value.owner
+      delete repo.owner
       const existing = people.find(({ person }) => person === owner)
       if (existing) {
         if (!existing.tags) {
@@ -133,8 +133,8 @@ function cleanRepos (repos) {
         })
       }
     }
-    value.people = people
-    value.package = value.package ? Array.from(new Set(value.package)) : []
+    repo.people = people
+    repo.package = repo.package ? Array.from(new Set(repo.package)) : []
   }
   return repos
 }
