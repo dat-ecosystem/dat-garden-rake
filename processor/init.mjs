@@ -1,5 +1,6 @@
 import { execa } from 'execa'
 import fs from 'fs/promises'
+import pkg from '../package.json' assert { type: 'json' }
 
 export const init = {
   type: 'init',
@@ -15,6 +16,7 @@ export const init = {
     ])).map(res => res.stdout)
     return {
       batch: [
+        { type: 'put', sublevel: api.meta, key: 'crawler', value: `${pkg.name}@${pkg.version}` },
         { type: 'put', sublevel: api.meta, key: 'maxDepth', value: api.opts.maxDepth },
         { type: 'put', sublevel: api.meta, key: 'maxRetries', value: api.opts.maxRetries },
         { type: 'put', sublevel: api.meta, key: 'git#commit', value: commit },
