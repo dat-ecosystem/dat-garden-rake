@@ -2,7 +2,7 @@ import { normalizeNPM, npmURL, parseNpmUrl } from '../lib/npm.mjs'
 import { createRepoTasks, githubRepoURL } from '../lib/repo.mjs'
 import { dependency } from './dependency.mjs'
 import { npmDependents } from './npm-dependents.mjs'
-import { repoDependents } from './repo-dependents.mjs'
+// import { repoDependents } from './repo-dependents.mjs'
 
 export const blessed = {
   type: 'blessed',
