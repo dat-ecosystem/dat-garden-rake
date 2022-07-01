@@ -57,10 +57,6 @@ async function normalizePackage (api, version, pkg) {
         bugs: pkg.bugs?.url || pkg.bugs,
         license: pkg.license,
         time: pkg.time?.[version],
-        size: {
-          packed: pkg._contentLength || 0,
-          unpacked: pkg.dist?.unpackedSize || 0
-        },
         people,
         dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
         funding: pkg.funding,
