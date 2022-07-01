@@ -1,25 +1,99 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { addURLToError, collect } from '../lib/util.mjs'
+import { addURLToError, predictableObj } from '../lib/util.mjs'
 
 export const finalize = {
   type: 'finalize',
   async process (api, task) {
-    const startTime = (await api.meta.get('start')).replace(/:/g, '').replace(/\./g, '_')
-    await exportJSON(api, path.join(task.options.outFolder, startTime))
+    const subDir = cleanDate(await api.meta.get('start'))
+    const exportPath = path.join(task.options.outFolder, subDir)
+    await exportJSON(api, exportPath, task)
+    await updateIndex(task.options.outFolder, path.join(subDir, 'index.json'))
     return {
       batch: []
     }
   }
 }
 
-async function exportJSON (api, cwd) {
+async function updateIndex (outFolder, metaPath) {
+  const indexPath = path.join(outFolder, 'index.json')
+  let index
+  try {
+    index = JSON.parse(await fs.readFile(indexPath))
+  } catch (e) {
+    index = {
+      history: []
+    }
+  }
+  index.latest = metaPath
+  index.history.push(metaPath)
+  await fs.writeFile(indexPath, JSON.stringify(index, null, 2))
+}
+
+function cleanDate (date) {
+  return String(date).replace(/:/g, '').replace(/\./g, '_')
+}
+
+async function exportJSON (api, cwd, task) {
   await fs.mkdir(cwd, { recursive: true })
-  await writeCollection(path.join(cwd, 'packages.json'), api.package)
-  await writeCollection(path.join(cwd, 'repos.json'), api.repo, cleanRepos)
-  await writeCollection(path.join(cwd, 'people.json'), api.people)
-  await writeCollection(path.join(cwd, 'errors.json'), api.tasks)
-  await writeCollection(path.join(cwd, 'meta.json'), api.meta)
+  const raw = path.join(cwd, 'raw')
+  await fs.mkdir(raw)
+  await writeJSON(path.join(raw, 'errors.json'), extractErrorTasks(await collect(api.tasks)))
+  await writeJSON(path.join(raw, 'packages.json'), await collect(api.package))
+  await writeJSON(path.join(raw, 'people.json'), await collect(api.people))
+  await writeJSON(path.join(raw, 'repos.json'), cleanRepos(await collect(api.repo)))
+  await writeJSON(path.join(cwd, 'index.json'), predictableObj({
+    ...await collect(api.meta),
+    exported: new Date().toISOString(),
+    files: {
+      'index.json': 'this file',
+      'raw/errors.json': 'tasks had an error while execution',
+      'raw/packages.json': 'all npm-package information',
+      'raw/people.json': 'all people linked in repos/packages/people',
+      'raw/repos.json': 'all repository related information'
+    }
+  }))
+}
+
+async function collect (db) {
+  const result = {}
+  for await (const [key, value] of db.iterator()) {
+    const parts = /(.+?)((#|!!)(.+?))?(\+[a-f0-9-]+)?$/.exec(key)
+    const namespace = parts[1]
+    const property = parts[4]
+    if (!property) {
+      result[namespace] = value
+      continue
+    }
+    let entry = result[namespace]
+    if (!entry) {
+      entry = {}
+      result[namespace] = entry
+    }
+    if (parts[5] /* + */) {
+      let arr = entry[property]
+      if (!arr) {
+        arr = []
+        entry[property] = arr
+      }
+      if (Array.isArray(value)) {
+        arr.push(...value)
+      } else {
+        arr.push(value)
+      }
+    } else {
+      entry[property] = value
+    }
+  }
+  return result
+}
+
+function extractErrorTasks (tasks) {
+  return Object.values(tasks).filter(task => task.errors).map(task => {
+    const { id, errors, ...rest } = task
+    rest.error = errors.pop()
+    return rest
+  })
 }
 
 function cleanRepos (repos) {
@@ -47,17 +121,13 @@ function cleanRepos (repos) {
       }
     }
     value.people = people
-    value.package = Array.from(new Set(value.package))
+    value.package = value.package ? Array.from(new Set(value.package)) : []
   }
   return repos
 }
 
-async function writeCollection (path, collection, process) {
-  let obj = await collect(collection)
+async function writeJSON (path, obj) {
   try {
-    if (process) {
-      obj = process(obj)
-    }
     const json = JSON.stringify(obj, null, 2)
     await fs.writeFile(path, json)
   } catch (err) {
