@@ -41,34 +41,29 @@ function toArray (input) {
 }
 
 async function normalizePackage (api, version, pkg) {
-  try {
-    const { value: people, batch } = await normalizePeople(api, {
-      author: [{ npmFree: (pkg.author || '') }],
-      publishedBy: [{ npmLogin: pkg._npmUser }],
-      contributor: toArray(pkg.contributors).map(contributor => ({ npmFree: contributor })),
-      maintainer: toArray(pkg.maintainers).map(maintainer => ({ npmLogin: maintainer })),
-      user: Object.keys(pkg.users || {}).map(user => ({ npmLogin: user }))
-    })
-    return {
-      value: {
-        name: pkg.name,
-        version,
-        description: pkg.description,
-        keywords: pkg.keywords,
-        homepage: pkg.homepage,
-        bugs: pkg.bugs?.url || pkg.bugs,
-        license: pkg.license,
-        time: pkg.time?.[version],
-        people,
-        dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
-        funding: pkg.funding,
-        // Make sure that pkg.repository is a normalized string for future lookup
-        repository: normalizeRepository(pkg.repository)
-      },
-      batch
-    }
-  } catch (err) {
-    console.log(pkg)
-    throw err
+  const { value: people, batch } = await normalizePeople(api, {
+    author: [{ npmFree: (pkg.author || '') }],
+    publishedBy: [{ npmLogin: pkg._npmUser }],
+    contributor: toArray(pkg.contributors).map(contributor => ({ npmFree: contributor })),
+    maintainer: toArray(pkg.maintainers).map(maintainer => ({ npmLogin: maintainer })),
+    user: Object.keys(pkg.users || {}).map(user => ({ npmLogin: user }))
+  })
+  return {
+    value: {
+      name: pkg.name,
+      version,
+      description: pkg.description,
+      keywords: pkg.keywords,
+      homepage: pkg.homepage,
+      bugs: pkg.bugs?.url || pkg.bugs,
+      license: pkg.license,
+      time: pkg.time?.[version],
+      people,
+      dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
+      funding: pkg.funding,
+      // Make sure that pkg.repository is a normalized string for future lookup
+      repository: normalizeRepository(pkg.repository)
+    },
+    batch
   }
 }
