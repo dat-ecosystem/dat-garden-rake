@@ -12,15 +12,12 @@
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "cache-control-parser": "^2.0.2",
     "execa": "^6.1.0",
     "jsdom": "^19.0.0",
     "level": "^8.0.0",
-    "lodash.mergewith": "^4.6.2",
     "p-map": "^5.5.0",
     "p-queue": "^7.2.0",
     "pacote": "^13.6.1",
-    "quick-lru": "^6.1.1",
     "semver": "^7.3.7"
   },
   "devDependencies": {
