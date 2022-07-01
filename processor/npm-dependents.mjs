@@ -19,7 +19,10 @@ export const npmDependents = resourceTaskProcessor(
     const dependents = []
     const batch = []
     if (page === 0) {
-      const { value: pkg } = await npmPackage.process(api, { url: createNpmUrl(name, version) })
+      const { value: pkg, batch: npmBatch } = await npmPackage.process(api, { url: createNpmUrl(name, version) })
+      batch.push(
+        ...npmBatch
+      )
       if (pkg.repository) {
         // batch.push(...await repoDependents.createTask(api, { repoURL: pkg.repository, depth }))
       }
