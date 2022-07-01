@@ -12,7 +12,7 @@ export const dependentInfo = taskProcessor({
       task: { type, dependent, depth: depth || 0 }
     }
   },
-  async create (api, { dependent, depth }) {
+  async exec (api, { dependent, depth }) {
     if (dependent.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url: dependent })
       if (pkg.repository) {

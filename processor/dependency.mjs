@@ -11,7 +11,7 @@ export const dependency = taskProcessor({
       task: { type, dependency }
     }
   },
-  async create (api, { dependency: url }) {
+  async exec (api, { dependency: url }) {
     if (url.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url })
       batch.push(...await dependency.createTasks(api, pkg.dependencies.map(dependency => ({ dependency }))))
