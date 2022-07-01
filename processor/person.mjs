@@ -1,6 +1,6 @@
 import { isGithubUser, isGitlabUser, isNpmUser, normalizeGitlabUser, parseGithubUser, parseGitlabUser } from '../lib/people.mjs'
 import { fetchGithubAPI, fetchGitlabAPI } from '../lib/repo.mjs'
-import { createRateLimiter, fetchJSDom, predictableObj, RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
+import { addURLToError, createRateLimiter, fetchJSDom, predictableObj, RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
 
 export const person = resourceTaskProcessor(
   'person',
@@ -60,7 +60,7 @@ async function fetchNpmJSDom (api, url) {
     return await fetchJSDom(api, url, { rateLimiter })
   } catch (err) {
     if (err.res?.status === 429) {
-      throw new RateLimitError(url, Date.now() + 5000)
+      throw addURLToError(url, new RateLimitError(Date.now() + 5000))
     }
     throw err
   }
