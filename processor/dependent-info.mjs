@@ -4,13 +4,15 @@ import { taskProcessor } from '../lib/util.mjs'
 import { npmPackage } from './npm-package.mjs'
 import { repoDependents } from './repo-dependents.mjs'
 
-export const dependentInfo = taskProcessor(
-  'dependent-info',
-  (_api, type, { dependent, depth }) => ({
-    key: JSON.stringify({ dependent, depth }),
-    task: { type, dependent, depth: depth || 0 }
-  }),
-  async (api, { dependent, depth }) => {
+export const dependentInfo = taskProcessor({
+  type: 'dependent-info',
+  getTaskDef (_api, type, { dependent, depth }) {
+    return {
+      key: JSON.stringify({ dependent, depth }),
+      task: { type, dependent, depth: depth || 0 }
+    }
+  },
+  async create (api, { dependent, depth }) {
     if (dependent.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url: dependent })
       if (pkg.repository) {
@@ -23,7 +25,7 @@ export const dependentInfo = taskProcessor(
     }
     throw new Error(`Unsupported dependent-info: ${dependent} [depth=${depth}]`)
   },
-  (api, task) => {
+  validateTask (api, task) {
     return task.depth <= api.opts.maxDepth && !task.dependent.startsWith('npm-unresolvable://')
   }
-)
+})

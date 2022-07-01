@@ -3,13 +3,15 @@ import { createRepoTasks, isRepo } from '../lib/repo.mjs'
 import { taskProcessor } from '../lib/util.mjs'
 import { npmPackage } from './npm-package.mjs'
 
-export const dependency = taskProcessor(
-  'dependency',
-  (_api, type, { dependency }) => ({
-    key: dependency,
-    task: { type, dependency }
-  }),
-  async (api, { dependency: url }) => {
+export const dependency = taskProcessor({
+  type: 'dependency',
+  getTaskDef (_api, type, { dependency }) {
+    return {
+      key: dependency,
+      task: { type, dependency }
+    }
+  },
+  async create (api, { dependency: url }) {
     if (url.startsWith(npmURL)) {
       const { batch, value: pkg } = await npmPackage.process(api, { url })
       batch.push(...await dependency.createTasks(api, pkg.dependencies.map(dependency => ({ dependency }))))
@@ -22,4 +24,4 @@ export const dependency = taskProcessor(
     }
     throw new Error(`Unsupported dependency ${url}`)
   }
-)
+})
