@@ -16,14 +16,15 @@ export const blessed = {
         batch: [
           ...await npmDependents.createTask(api, { name, version, depth: 0 }),
           ...await dependency.createTask(api, { dependency: url }),
-          { type: 'put', sublevel: api.meta, key: `blessed#${blessed}`, value: url }
+          { type: 'put', sublevel: api.meta, key: `blessed#${blessed}`, value: { type: 'package', url } }
         ]
       }
     }
     if (blessed.startsWith(githubRepoURL)) {
       return {
         batch: [
-          { type: 'put', sublevel: api.meta, key: `blessed#${blessed}`, value: blessed },
+          { type: 'put', sublevel: api.meta, key: `blessed#${blessed}`, value: { type: 'repo', url: blessed } },
+          ...await createRepoTasks(api, { repoURL: blessed })
           // ...await repoDependents.createTask(api, { repoURL, depth: 0 })
         ]
       }
