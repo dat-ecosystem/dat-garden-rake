@@ -1,3 +1,4 @@
+import { execa } from 'execa'
 import fs from 'fs/promises'
 
 export const init = {
@@ -8,13 +9,23 @@ export const init = {
     if (!Array.isArray(blessed)) {
       throw new Error('blessed.json expect to contain an array')
     }
+    const [commit, status] = (await Promise.all([
+      execa('git', ['rev-parse', 'HEAD']),
+      execa('git', ['status', '--short'])
+    ])).map(res => res.stdout)
     return {
-      batch: blessed.map((entry, index) => {
-        if (typeof entry !== 'string') {
-          throw new Error(`blessed.json entry#${index} is not a string ${entry} [${typeof entry}]`)
-        }
-        return api.createTask({ type: 'blessed', blessed: entry })
-      })
+      batch: [
+        { type: 'put', sublevel: api.meta, key: 'maxDepth', value: api.opts.maxDepth },
+        { type: 'put', sublevel: api.meta, key: 'maxRetries', value: api.opts.maxRetries },
+        { type: 'put', sublevel: api.meta, key: 'git#commit', value: commit },
+        { type: 'put', sublevel: api.meta, key: 'git#status', value: status },
+        ...blessed.map((entry, index) => {
+          if (typeof entry !== 'string') {
+            throw new Error(`blessed.json entry#${index} is not a string ${entry} [${typeof entry}]`)
+          }
+          return api.createTask({ type: 'blessed', blessed: entry })
+        })
+      ]
     }
   }
 }
