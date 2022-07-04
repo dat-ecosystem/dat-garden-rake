@@ -10,8 +10,9 @@ export async function scrape (opts = {}) {
   const log = (...args) => {
     if (opts.quiet) {
       process.stdout.write('.')
+    } else {
+      console.log('[SCRAPER]', ...args)
     }
-    // console.log('[SCRAPER]', ...args)
   }
   const cacheDb = new Level(cache ?? 'cache')
   const db = new Level(state ?? 'state')
