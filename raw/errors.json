@@ -54,12 +54,6 @@
     "error": "Error: Can not load repo contributors for http://github.com/bmpvieira/automarking.git\n    at create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:24:11)\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:152:15\n    at getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:34)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19\n    at async run (file:///home/runner/work/dat-garden-rake/dat-garden-rake/node_modules/p-queue/dist/index.js:109:36)"
   },
   {
-    "type": "repo-contributors",
-    "repoURL": "http://github.com/bmpvieira/automarking.git",
-    "retry": null,
-    "error": "Error: Can not load repo contributors for http://github.com/bmpvieira/automarking.git\n    at create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:24:11)\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:152:15\n    at getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:34)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19\n    at async run (file:///home/runner/work/dat-garden-rake/dat-garden-rake/node_modules/p-queue/dist/index.js:109:36)"
-  },
-  {
     "type": "repo-owner",
     "repoURL": "http://github.com/bmpvieira/automarking.git",
     "retry": null,
@@ -75,13 +69,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/aditya-singh9/fsync",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/aditya-singh9/fsync/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/aditya-singh9/fsync",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/aditya-singh9/fsync/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/aditya-singh9/fsync/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -105,7 +93,13 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/andrewosh/hyperdrive-rss-importer",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/andrewosh/hyperdrive-rss-importer/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/andrewosh/hyperdrive-rss-importer/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/andrewosh/hyperdrive-rss-importer",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/andrewosh/hyperdrive-rss-importer/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
@@ -117,7 +111,13 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/andrewosh/hyperspace-pinner",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/andrewosh/hyperspace-pinner/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/andrewosh/hyperspace-pinner/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/andrewosh/hyperspace-pinner",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/andrewosh/hyperspace-pinner/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
@@ -135,13 +135,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/ddnlink/ddn-server",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/ddnlink/ddn-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/ddnlink/ddn-server",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/ddnlink/ddn-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/ddnlink/ddn-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -165,19 +159,25 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/getsocket/socket-cli",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/getsocket/socket-cli/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/getsocket/socket-cli/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/getsocket/socket-cli",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/getsocket/socket-cli/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/getsocket/socket-client",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/getsocket/socket-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/getsocket/socket-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
-    "repoURL": "git+https://github.com/getsocket/socket-client",
+    "repoURL": "git+https://github.com/getsocket/socket-core",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/getsocket/socket-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/getsocket/socket-core/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -201,13 +201,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/git@github.com:bmpvieira/dat-elife",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/git@github.com:bmpvieira/dat-elife/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/git@github.com:bmpvieira/dat-elife",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/git@github.com:bmpvieira/dat-elife/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/git@github.com:bmpvieira/dat-elife/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -261,13 +255,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/hyperdivision/heimdall-server",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/hyperdivision/heimdall-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/hyperdivision/heimdall-server",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/hyperdivision/heimdall-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/hyperdivision/heimdall-server/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -279,7 +267,13 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/hyperdivision/ui",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/hyperdivision/ui/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/hyperdivision/ui/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/hyperdivision/ui",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/hyperdivision/ui/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
@@ -315,25 +309,31 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/karissa/dir-dat",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/karissa/dir-dat/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/karissa/dir-dat/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/karissa/dir-dat",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/karissa/dir-dat/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/leveldb2use/framework",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/leveldb2use/framework/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/leveldb2use/framework",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/leveldb2use/framework/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/leveldb2use/framework/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/libscie/api",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/libscie/api/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/libscie/api/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/libscie/api",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/libscie/api/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
@@ -375,31 +375,25 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/p2pcommons/sdk-js",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/p2pcommons/sdk-js/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/p2pcommons/sdk-js/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/p2pcommons/sdk-js",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/p2pcommons/sdk-js/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/poga/hyperservice",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/poga/hyperservice/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/poga/hyperservice",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/poga/hyperservice/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/poga/hyperservice/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/rebelwire/rebelwire-client",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/rebelwire/rebelwire-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/rebelwire/rebelwire-client",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/rebelwire/rebelwire-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/rebelwire/rebelwire-client/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
@@ -433,6 +427,12 @@
   },
   {
     "type": "repo-contributors",
+    "repoURL": "git+https://github.com/spicy-ashes/crunchydisc",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/spicy-ashes/crunchydisc/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+  },
+  {
+    "type": "repo-contributors",
     "repoURL": "git+https://github.com/spicy-ashes/endernet",
     "unrecoverable": true,
     "error": "https://api.github.com/repos/spicy-ashes/endernet/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
@@ -447,25 +447,31 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/tinkerhub/tinkerhubd",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/tinkerhub/tinkerhubd/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://github.com/tinkerhub/tinkerhubd",
-    "unrecoverable": true,
-    "error": "https://api.github.com/repos/tinkerhub/tinkerhubd/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://api.github.com/repos/tinkerhub/tinkerhubd/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/wirelineio/botkit",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/wirelineio/botkit/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/wirelineio/botkit/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/wirelineio/botkit",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/wirelineio/botkit/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/wirelineio/chess",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/wirelineio/chess/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/wirelineio/chess/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/wirelineio/chess",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/wirelineio/chess/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-contributors",
@@ -477,7 +483,13 @@
     "type": "repo-contributors",
     "repoURL": "git+https://github.com/wirelineio/gravity",
     "unrecoverable": true,
-    "error": "https://api.github.com/repos/wirelineio/gravity/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGithubAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:30:10)\n    at async loadGithubContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:56:24)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:22:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://api.github.com/repos/wirelineio/gravity/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://github.com/wirelineio/gravity",
+    "unrecoverable": true,
+    "error": "https://api.github.com/repos/wirelineio/gravity/contributors: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "person",
@@ -759,7 +771,13 @@
     "type": "repo-contributors",
     "repoURL": "git+https://gitlab.com/ahau/pataka-cli",
     "unrecoverable": true,
-    "error": "https://gitlab.com/api/v4/projects/ahau%2Fpataka-cli/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGitlabAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:22:10)\n    at async loadGitlabContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:34:19)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:19:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
+    "error": "https://gitlab.com/api/v4/projects/ahau%2Fpataka-cli/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+  },
+  {
+    "type": "repo-contributors",
+    "repoURL": "git+https://gitlab.com/ahau/pataka-cli",
+    "unrecoverable": true,
+    "error": "https://gitlab.com/api/v4/projects/ahau%2Fpataka-cli/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
   },
   {
     "type": "repo-owner",
@@ -783,13 +801,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://gitlab.com/ahau/ssb-graphql-main",
     "unrecoverable": true,
-    "error": "https://gitlab.com/api/v4/projects/ahau%2Fssb-graphql-main/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://gitlab.com/ahau/ssb-graphql-main",
-    "unrecoverable": true,
-    "error": "https://gitlab.com/api/v4/projects/ahau%2Fssb-graphql-main/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://gitlab.com/api/v4/projects/ahau%2Fssb-graphql-main/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGitlabAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:22:10)\n    at async loadGitlabContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:34:19)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:19:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-owner",
@@ -837,13 +849,7 @@
     "type": "repo-contributors",
     "repoURL": "git+https://gitlab.com/ahau/whakapapa-ora",
     "unrecoverable": true,
-    "error": "https://gitlab.com/api/v4/projects/ahau%2Fwhakapapa-ora/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
-  },
-  {
-    "type": "repo-contributors",
-    "repoURL": "git+https://gitlab.com/ahau/whakapapa-ora",
-    "unrecoverable": true,
-    "error": "https://gitlab.com/api/v4/projects/ahau%2Fwhakapapa-ora/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)"
+    "error": "https://gitlab.com/api/v4/projects/ahau%2Fwhakapapa-ora/members/all?per_page=100&page=1: Error: 404 - Not Found\n    at file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:249:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processCache (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:182:13)\n    at async Object.fetchJSON (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:219:19)\n    at async fetchGitlabAPI (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/repo.mjs:22:10)\n    at async loadGitlabContributors (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:34:19)\n    at async create (file:///home/runner/work/dat-garden-rake/dat-garden-rake/processor/repo-contributors.mjs:19:14)\n    at async getOrCreate (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:96:28)\n    at async process (file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/util.mjs:147:14)\n    at async file:///home/runner/work/dat-garden-rake/dat-garden-rake/lib/task-queue.mjs:299:19"
   },
   {
     "type": "repo-owner",
