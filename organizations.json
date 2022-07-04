@@ -50,9 +50,16 @@
     "html_url": "https://github.com/fsteff",
     "location": "Austria"
   },
-  "mailto://kg@magmacollective.org": {
-    "email": "kg@magmacollective.org",
-    "name": "kyphae"
+  "https://github.com/ameba23": {
+    "email": "ameba23@systemli.org",
+    "name": "ameba23",
+    "avatar_url": "https://avatars.githubusercontent.com/u/10427223?v=4",
+    "company": "Magma Collective",
+    "description": "peer-to-peer enthusiast",
+    "github_type": "User",
+    "github_url": "https://github.com/ameba23",
+    "html_url": "https://github.com/ameba23",
+    "location": "Sachsen"
   },
   "https://github.com/coboxcoop": {
     "avatar_url": "https://avatars.githubusercontent.com/u/50157554?v=4",
@@ -63,10 +70,6 @@
     "html_url": "https://github.com/coboxcoop",
     "location": "cypherspace",
     "name": "CoBox Co-operative Cloud"
-  },
-  "mailto://kieran@tenthousandthings.org.uk": {
-    "email": "kieran@tenthousandthings.org.uk",
-    "name": "kyphae"
   },
   "https://github.com/connor-davis": {
     "avatar_url": "https://avatars.githubusercontent.com/u/61504387?v=4",
@@ -185,17 +188,6 @@
     "location": "London",
     "name": "Freddie Ridell"
   },
-  "https://github.com/mafintosh": {
-    "email": "mathiasbuus@gmail.com",
-    "html_url": "https://github.com/mafintosh",
-    "name": "Mathias Buus",
-    "avatar_url": "https://avatars.githubusercontent.com/u/376661?v=4",
-    "company": "@hyperdivision",
-    "description": "Rød grød med fløde",
-    "github_type": "User",
-    "github_url": "https://github.com/mafintosh",
-    "location": "Copenhagen, Denmark"
-  },
   "https://github.com/hyperdivision": {
     "avatar_url": "https://avatars.githubusercontent.com/u/40634961?v=4",
     "description": "Scaling, distributed systems and crypto. https://hyperdivision.dk",
@@ -266,6 +258,17 @@
     "github_url": "https://github.com/datproject",
     "html_url": "https://github.com/datproject",
     "name": "Dat Project"
+  },
+  "https://github.com/mafintosh": {
+    "email": "mathiasbuus@gmail.com",
+    "html_url": "https://github.com/mafintosh",
+    "name": "Mathias Buus",
+    "avatar_url": "https://avatars.githubusercontent.com/u/376661?v=4",
+    "company": "@hyperdivision",
+    "description": "Rød grød med fløde",
+    "github_type": "User",
+    "github_url": "https://github.com/mafintosh",
+    "location": "Copenhagen, Denmark"
   },
   "https://github.com/inkandswitch": {
     "avatar_url": "https://avatars.githubusercontent.com/u/13871147?v=4",
@@ -381,9 +384,9 @@
     "location": "Munich, Germany",
     "name": "Sam Macbeth"
   },
-  "mailto://cherese.eriepa@outlook.com": {
-    "email": "cherese.eriepa@outlook.com",
-    "name": "chereseeriepa"
+  "mailto://andre+npm@staltz.com": {
+    "email": "andre+npm@staltz.com",
+    "name": "staltz"
   },
   "https://github.com/synonymdev": {
     "avatar_url": "https://avatars.githubusercontent.com/u/68897969?v=4",
@@ -471,9 +474,9 @@
     "location": "New York, NY, USA",
     "name": "Ara Blocks"
   },
-  "mailto://whimful@gmail.com": {
-    "email": "whimful@gmail.com",
-    "name": "mixmix"
+  "mailto://bakapita10@gmail.com": {
+    "email": "bakapita10@gmail.com",
+    "name": "blakeakapita"
   },
   "https://github.com/aholstenson": {
     "email": "a@holstenson.se",
@@ -673,6 +676,10 @@
     "github_url": "https://github.com/pvorb",
     "location": "Schwäbisch Hall, Germany",
     "twitter_url": "https://twitter.com/pvorb"
+  },
+  "mailto://kieran@tenthousandthings.org.uk": {
+    "email": "kieran@tenthousandthings.org.uk",
+    "name": "kyphae"
   },
   "https://github.com/compact-encoding": {
     "avatar_url": "https://avatars.githubusercontent.com/u/88140972?v=4",
@@ -982,17 +989,6 @@
     "location": "New York City",
     "twitter_url": "https://twitter.com/reconbot",
     "npm_url": "https://npmjs.com/~reconbot"
-  },
-  "https://github.com/ameba23": {
-    "email": "ameba23@systemli.org",
-    "name": "ameba23",
-    "avatar_url": "https://avatars.githubusercontent.com/u/10427223?v=4",
-    "company": "Magma Collective",
-    "description": "peer-to-peer enthusiast",
-    "github_type": "User",
-    "github_url": "https://github.com/ameba23",
-    "html_url": "https://github.com/ameba23",
-    "location": "Sachsen"
   },
   "https://github.com/tarruda": {
     "avatar_url": "https://avatars.githubusercontent.com/u/842846?v=4",
@@ -1309,6 +1305,10 @@
     "email": "angellus.falsus@gmail.com",
     "name": "cblgh"
   },
+  "mailto://whimful@gmail.com": {
+    "email": "whimful@gmail.com",
+    "name": "mixmix"
+  },
   "https://github.com/ssbc": {
     "avatar_url": "https://avatars.githubusercontent.com/u/10190339?v=4",
     "description": "A distributed and secure peer to peer social network",
@@ -1478,9 +1478,9 @@
     "email": "me@romuloalves.dev",
     "name": "romuloalves"
   },
-  "mailto://andre+npm@staltz.com": {
-    "email": "andre+npm@staltz.com",
-    "name": "staltz"
+  "mailto://cherese.eriepa@outlook.com": {
+    "email": "cherese.eriepa@outlook.com",
+    "name": "chereseeriepa"
   },
   "https://github.com/staticpeer": {
     "avatar_url": "https://avatars.githubusercontent.com/u/43322670?v=4",

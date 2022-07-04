@@ -163,7 +163,7 @@
       "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/kappa-drive/v/3.1.1"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/kappa-drive/v/0.0.1": {
     "dependents": [],
@@ -178,7 +178,7 @@
     "dependencies": [
       "https://www.npmjs.com/package/pump/v/3.0.0"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/log/v/1.0.6-alpha.1": {
     "dependents": [
@@ -191,7 +191,7 @@
       "https://www.npmjs.com/package/hypertrie/v/5.1.3",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/multifeed/v/0.0.2": {
     "dependents": [
@@ -201,13 +201,13 @@
       "https://www.npmjs.com/package/@coboxcoop/space/v/1.0.7-alpha.1"
     ],
     "dependencies": [
+      "https://www.npmjs.com/package/@corestore/networker/v/1.2.1",
       "https://www.npmjs.com/package/abstract-extension/v/3.1.1",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
-      "https://www.npmjs.com/package/@corestore/networker/v/1.2.1",
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
@@ -215,7 +215,7 @@
       "https://www.npmjs.com/package/random-access-file/v/2.2.1",
       "https://www.npmjs.com/package/stream-collector/v/1.0.1"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/networker/v/1.0.0-alpha.1": {
     "dependents": [
@@ -223,10 +223,10 @@
       "https://www.npmjs.com/package/@coboxcoop/server/v/2.0.0-alpha.1"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/@corestore/networker/v/1.2.1",
-      "https://www.npmjs.com/package/@coboxcoop/multifeed/v/0.0.2"
+      "https://www.npmjs.com/package/@coboxcoop/multifeed/v/0.0.2",
+      "https://www.npmjs.com/package/@corestore/networker/v/1.2.1"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/peer-fs/v/0.0.1": {
     "dependents": [],
@@ -252,7 +252,7 @@
       "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/random-access-file/v/2.2.1"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/seeder/v/1.0.2-alpha.1": {
     "dependents": [],
@@ -263,7 +263,7 @@
       "https://www.npmjs.com/package/sodium-native/v/3.3.0",
       "https://www.npmjs.com/package/thunky/v/1.1.0"
     ],
-    "owner": "mailto://kieran@tenthousandthings.org.uk"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/server/v/2.0.0-alpha.1": {
     "dependents": [],
@@ -279,7 +279,7 @@
       "https://www.npmjs.com/package/sodium-native/v/3.3.0",
       "https://www.npmjs.com/package/thunky/v/1.1.0"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/space/v/1.0.7-alpha.1": {
     "dependents": [
@@ -293,7 +293,7 @@
       "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/kappa-drive/v/3.1.1"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@coboxcoop/superusers/v/1.0.7-alpha.1": {
     "dependents": [
@@ -301,13 +301,13 @@
       "https://www.npmjs.com/package/@coboxcoop/server/v/2.0.0-alpha.1"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/@coboxcoop/log/v/1.0.6-alpha.1",
       "https://www.npmjs.com/package/@coboxcoop/replicator/v/1.0.6-alpha.1",
+      "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/debug/v/4.3.4",
       "https://www.npmjs.com/package/thunky/v/1.1.0"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/@connor-davis/dropzone-protocol/v/1.1.9": {
     "dependents": [],
@@ -397,10 +397,10 @@
     "dependencies": [
       "https://www.npmjs.com/package/derive-key/v/1.0.1",
       "https://www.npmjs.com/package/fd-lock/v/1.2.0",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-multi-key/v/4.0.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypertrie/v/5.1.3",
       "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/random-access-file/v/2.2.1",
@@ -477,17 +477,17 @@
     "dependencies": [
       "https://www.npmjs.com/package/@dxos/bot-factory-client/v/2.33.4",
       "https://www.npmjs.com/package/@dxos/echo-db/v/2.33.4",
+      "https://www.npmjs.com/package/@dxos/echo-protocol/v/2.33.4",
       "https://www.npmjs.com/package/@dxos/network-manager/v/2.33.4",
-      "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/@dxos/echo-protocol/v/2.33.4"
+      "https://www.npmjs.com/package/debug/v/4.3.4"
     ],
     "owner": "mailto://bot@dxos.org"
   },
   "https://www.npmjs.com/package/@dxos/chess-bot/v/2.14.9": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/@dxos/chess-model/v/2.14.9"
+      "https://www.npmjs.com/package/@dxos/chess-model/v/2.14.9",
+      "https://www.npmjs.com/package/debug/v/4.3.4"
     ],
     "owner": "mailto://bot@dxos.org"
   },
@@ -942,12 +942,12 @@
     "dependents": [],
     "dependencies": [
       "https://www.npmjs.com/package/abstract-extension/v/3.1.1",
-      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/corestore-swarm-networking/v/5.5.1",
+      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
@@ -1120,7 +1120,7 @@
       "https://www.npmjs.com/package/streamx/v/2.12.4",
       "https://www.npmjs.com/package/thunky/v/1.1.0"
     ],
-    "owner": "https://github.com/mafintosh"
+    "owner": "https://github.com/andrewosh"
   },
   "https://www.npmjs.com/package/@hyperdivision/heimdall-pairing/v/6.0.6": {
     "dependents": [
@@ -1136,8 +1136,8 @@
   "https://www.npmjs.com/package/@hyperdivision/heimdall-server/v/5.0.4": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/@hyperdivision/heimdall/v/9.0.15",
-      "https://www.npmjs.com/package/@hyperdivision/heimdall-pairing/v/6.0.6"
+      "https://www.npmjs.com/package/@hyperdivision/heimdall-pairing/v/6.0.6",
+      "https://www.npmjs.com/package/@hyperdivision/heimdall/v/9.0.15"
     ],
     "owner": "https://github.com/hyperdivision"
   },
@@ -1195,8 +1195,8 @@
     "dependencies": [
       "https://www.npmjs.com/package/hyperbee/v/1.10.1",
       "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
-      "https://www.npmjs.com/package/hyperspace/v/3.19.0",
       "https://www.npmjs.com/package/hyperspace-mirroring-service/v/1.0.7",
+      "https://www.npmjs.com/package/hyperspace/v/3.19.0",
       "https://www.npmjs.com/package/pretty-hash/v/1.0.1",
       "https://www.npmjs.com/package/pump/v/3.0.0"
     ],
@@ -1208,8 +1208,8 @@
       "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/codecs/v/2.2.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
-      "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperdrive-schemas/v/2.0.0",
+      "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperspace/v/3.19.0",
       "https://www.npmjs.com/package/is-options/v/1.0.2"
     ],
@@ -1242,8 +1242,8 @@
       "https://www.npmjs.com/package/@hyperswarm/dht/v/6.0.2",
       "https://www.npmjs.com/package/@hyperswarm/secret-stream/v/6.0.0",
       "https://www.npmjs.com/package/b4a/v/1.5.3",
-      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/compact-encoding-net/v/1.0.1",
+      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/events/v/3.3.0",
       "https://www.npmjs.com/package/protomux/v/3.2.1",
       "https://www.npmjs.com/package/safety-catch/v/1.0.2",
@@ -1289,8 +1289,8 @@
       "https://www.npmjs.com/package/@hyperswarm/secret-stream/v/6.0.0",
       "https://www.npmjs.com/package/b4a/v/1.5.3",
       "https://www.npmjs.com/package/bogon/v/1.0.0",
-      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/compact-encoding-net/v/1.0.1",
+      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/debugging-stream/v/2.0.0",
       "https://www.npmjs.com/package/dht-rpc/v/6.1.1",
       "https://www.npmjs.com/package/events/v/3.3.0",
@@ -1407,9 +1407,9 @@
   "https://www.npmjs.com/package/@imbueapp/cell/v/0.0.0": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/debug/v/4.3.4",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
+      "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/shuffled-priority-queue/v/2.1.0"
     ],
     "owner": "https://github.com/imbueplatform"
@@ -1419,9 +1419,9 @@
       "https://www.npmjs.com/package/@imbueplatform/dot-http/v/0.0.2"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/debug/v/4.3.4",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
+      "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/shuffled-priority-queue/v/2.1.0"
     ],
     "owner": "https://github.com/imbueplatform"
@@ -1429,8 +1429,8 @@
   "https://www.npmjs.com/package/@imbueplatform/dot-http/v/0.0.2": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/pump/v/3.0.0",
-      "https://www.npmjs.com/package/debug/v/4.3.4"
+      "https://www.npmjs.com/package/debug/v/4.3.4",
+      "https://www.npmjs.com/package/pump/v/3.0.0"
     ],
     "owner": "https://github.com/imbueplatform"
   },
@@ -1578,8 +1578,8 @@
   "https://www.npmjs.com/package/@m-onz/spectre/v/1.0.4": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/hyperdb/v/3.5.0",
-      "https://www.npmjs.com/package/hyperdb-mesh/v/0.0.3"
+      "https://www.npmjs.com/package/hyperdb-mesh/v/0.0.3",
+      "https://www.npmjs.com/package/hyperdb/v/3.5.0"
     ],
     "owner": "mailto://stphnmnslw@gmail.com"
   },
@@ -1800,8 +1800,8 @@
       "https://www.npmjs.com/package/@sammacbeth/dat-seeder/v/0.8.1"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/corestore-swarm-networking/v/5.5.1",
+      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/hyperdrive/v/10.21.0"
     ],
     "owner": "https://github.com/sammacbeth"
@@ -1841,7 +1841,7 @@
     "dependencies": [
       "https://www.npmjs.com/package/ssb-hyper-blobs/v/3.0.0"
     ],
-    "owner": "mailto://cherese.eriepa@outlook.com"
+    "owner": "mailto://andre+npm@staltz.com"
   },
   "https://www.npmjs.com/package/@synonymdev/slashauth/v/1.0.0-alpha.0": {
     "dependents": [
@@ -2198,8 +2198,8 @@
     "dependencies": [
       "https://www.npmjs.com/package/cfsnet/v/0.20.0",
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/protocol-buffers/v/4.2.0",
       "https://www.npmjs.com/package/protocol-buffers-encodings/v/1.1.1",
+      "https://www.npmjs.com/package/protocol-buffers/v/4.2.0",
       "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/random-access-file/v/2.2.1"
     ],
@@ -2240,7 +2240,7 @@
       "https://www.npmjs.com/package/artefact-store/v/1.3.0",
       "https://www.npmjs.com/package/debug/v/4.3.4"
     ],
-    "owner": "mailto://whimful@gmail.com"
+    "owner": "mailto://bakapita10@gmail.com"
   },
   "https://www.npmjs.com/package/artefact-store/v/1.3.0": {
     "dependents": [
@@ -2255,7 +2255,7 @@
       "https://www.npmjs.com/package/random-access-file/v/2.2.1",
       "https://www.npmjs.com/package/sodium-native/v/3.3.0"
     ],
-    "owner": "mailto://whimful@gmail.com"
+    "owner": "mailto://bakapita10@gmail.com"
   },
   "https://www.npmjs.com/package/ataraxia-cli/v/0.12.2": {
     "dependents": [],
@@ -2726,7 +2726,7 @@
       "https://www.npmjs.com/package/cobox-swarm/v/1.0.0",
       "https://www.npmjs.com/package/protocol-buffers/v/4.2.0"
     ],
-    "owner": "mailto://kieran@tenthousandthings.org.uk"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/cobox-log/v/1.0.2-alpha1": {
     "dependents": [
@@ -2764,7 +2764,7 @@
       "https://www.npmjs.com/package/cobox-group/v/2.1.1",
       "https://www.npmjs.com/package/debug/v/4.3.4"
     ],
-    "owner": "mailto://kieran@tenthousandthings.org.uk"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/cobox-swarm/v/1.0.0": {
     "dependents": [
@@ -2872,9 +2872,9 @@
       "https://www.npmjs.com/package/derive-key/v/1.0.1",
       "https://www.npmjs.com/package/derived-key-storage/v/2.1.0",
       "https://www.npmjs.com/package/fd-lock/v/1.2.0",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
       "https://www.npmjs.com/package/refpool/v/1.2.2"
     ],
@@ -3297,9 +3297,9 @@
       "https://www.npmjs.com/package/@geut/hyperdrive-promise/v/3.1.3",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperswarm-web/v/2.2.0"
     ],
@@ -3498,10 +3498,10 @@
     "dependencies": [
       "https://www.npmjs.com/package/derive-key/v/1.0.1",
       "https://www.npmjs.com/package/fd-lock/v/1.2.0",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-multi-key/v/4.0.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypertrie/v/5.1.3",
       "https://www.npmjs.com/package/pump/v/3.0.0",
       "https://www.npmjs.com/package/random-access-file/v/2.2.1",
@@ -3556,8 +3556,8 @@
   "https://www.npmjs.com/package/dht-rpc/v/6.1.1": {
     "dependencies": [
       "https://www.npmjs.com/package/b4a/v/1.5.3",
-      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/compact-encoding-net/v/1.0.1",
+      "https://www.npmjs.com/package/compact-encoding/v/2.7.0",
       "https://www.npmjs.com/package/events/v/3.3.0",
       "https://www.npmjs.com/package/fast-fifo/v/1.1.0",
       "https://www.npmjs.com/package/kademlia-routing-table/v/1.0.1",
@@ -3739,8 +3739,8 @@
   "https://www.npmjs.com/package/getsocket-desktop/v/1.0.0": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/getsocket-core/v/1.0.0",
-      "https://www.npmjs.com/package/dat-encoding/v/5.0.2"
+      "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
+      "https://www.npmjs.com/package/getsocket-core/v/1.0.0"
     ]
   },
   "https://www.npmjs.com/package/git-remote-hypergit/v/2.0.4": {
@@ -3748,8 +3748,8 @@
       "https://www.npmjs.com/package/hypergit/v/3.2.0"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/hyperdb/v/3.5.0",
-      "https://www.npmjs.com/package/hyperdb-git-repo/v/1.0.4"
+      "https://www.npmjs.com/package/hyperdb-git-repo/v/1.0.4",
+      "https://www.npmjs.com/package/hyperdb/v/3.5.0"
     ],
     "owner": "https://github.com/noffle"
   },
@@ -3827,8 +3827,8 @@
       "https://www.npmjs.com/package/pumpify/v/2.0.1",
       "https://www.npmjs.com/package/stream-collector/v/1.0.1",
       "https://www.npmjs.com/package/streamx/v/2.12.4",
-      "https://www.npmjs.com/package/thunky/v/1.1.0",
       "https://www.npmjs.com/package/thunky-map/v/1.0.1",
+      "https://www.npmjs.com/package/thunky/v/1.1.0",
       "https://www.npmjs.com/package/unixify/v/1.0.0",
       "https://www.npmjs.com/package/varint/v/5.0.2"
     ],
@@ -3976,9 +3976,9 @@
       "https://www.npmjs.com/package/@geut/hyperdrive-promise/v/3.1.3",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperswarm-web/v/2.2.0"
     ],
@@ -4171,8 +4171,8 @@
   },
   "https://www.npmjs.com/package/hypercore-default-storage/v/1.1.1": {
     "dependencies": [
-      "https://www.npmjs.com/package/random-access-file/v/2.2.1",
-      "https://www.npmjs.com/package/fsctl/v/1.0.0"
+      "https://www.npmjs.com/package/fsctl/v/1.0.0",
+      "https://www.npmjs.com/package/random-access-file/v/2.2.1"
     ],
     "owner": "https://github.com/mafintosh"
   },
@@ -4197,8 +4197,8 @@
       "https://www.npmjs.com/package/@dazaar/sdk/v/1.0.1"
     ],
     "dependencies": [
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/random-access-storage/v/1.4.3"
     ],
     "owner": "https://github.com/mafintosh"
@@ -4282,13 +4282,13 @@
   "https://www.npmjs.com/package/hypercore-upload-server/v/0.1.2": {
     "dependents": [],
     "dependencies": [
-      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/corestore-swarm-networking/v/5.5.1",
+      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-multipart/v/0.2.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypertrie/v/5.1.3",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoassert/v/2.0.0",
@@ -4517,8 +4517,8 @@
     "dependencies": [
       "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
       "https://www.npmjs.com/package/codecs/v/2.2.0",
-      "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperdrive-schemas/v/2.0.0",
+      "https://www.npmjs.com/package/hyperdrive/v/10.21.0",
       "https://www.npmjs.com/package/hyperspace/v/3.19.0",
       "https://www.npmjs.com/package/last-one-wins/v/1.0.4",
       "https://www.npmjs.com/package/pump/v/3.0.0",
@@ -4532,8 +4532,8 @@
     "dependents": [],
     "dependencies": [
       "https://www.npmjs.com/package/call-me-maybe/v/1.0.1",
-      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/corestore-swarm-networking/v/5.5.1",
+      "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
       "https://www.npmjs.com/package/end-of-stream/v/1.4.4",
       "https://www.npmjs.com/package/hypercore-cache/v/1.0.2",
@@ -4644,8 +4644,8 @@
       "https://www.npmjs.com/package/pumpify/v/2.0.1",
       "https://www.npmjs.com/package/stream-collector/v/1.0.1",
       "https://www.npmjs.com/package/streamx/v/2.12.4",
-      "https://www.npmjs.com/package/thunky/v/1.1.0",
       "https://www.npmjs.com/package/thunky-map/v/1.0.1",
+      "https://www.npmjs.com/package/thunky/v/1.1.0",
       "https://www.npmjs.com/package/unixify/v/1.0.0",
       "https://www.npmjs.com/package/varint/v/5.0.2"
     ],
@@ -4714,8 +4714,8 @@
     "dependencies": [
       "https://www.npmjs.com/package/git-remote-hypergit/v/2.0.4",
       "https://www.npmjs.com/package/gitverse/v/1.0.2",
-      "https://www.npmjs.com/package/hyperdb/v/3.5.0",
-      "https://www.npmjs.com/package/hyperdb-git-repo/v/1.0.4"
+      "https://www.npmjs.com/package/hyperdb-git-repo/v/1.0.4",
+      "https://www.npmjs.com/package/hyperdb/v/3.5.0"
     ],
     "owner": "https://github.com/noffle"
   },
@@ -4794,9 +4794,9 @@
       "https://www.npmjs.com/package/abstract-extension/v/3.1.1",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
@@ -4912,10 +4912,10 @@
       "https://www.npmjs.com/package/@corestore/networker/v/1.2.1",
       "https://www.npmjs.com/package/@hyperspace/migration-tool/v/1.2.1",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-cache/v/1.0.2",
       "https://www.npmjs.com/package/hypercore-default-storage/v/1.1.1",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypertrie/v/5.1.3",
       "https://www.npmjs.com/package/inspect-custom-symbol/v/1.1.1"
     ],
@@ -5080,8 +5080,8 @@
       "https://www.npmjs.com/package/array-lru/v/1.1.1",
       "https://www.npmjs.com/package/bulk-write-stream/v/1.1.4",
       "https://www.npmjs.com/package/codecs/v/2.2.0",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/inspect-custom-symbol/v/1.1.1",
       "https://www.npmjs.com/package/is-options/v/1.0.2",
@@ -5170,9 +5170,9 @@
       "https://www.npmjs.com/package/@corestore/networker/v/1.2.1",
       "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hyperswarm-web/v/2.2.0",
       "https://www.npmjs.com/package/sodium-native/v/3.3.0",
       "https://www.npmjs.com/package/sodium-universal/v/3.1.0"
@@ -5341,10 +5341,10 @@
       "https://www.npmjs.com/package/mountable-hypertrie/v/2.8.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
       "https://www.npmjs.com/package/protocol-buffers-encodings/v/1.1.1",
-      "https://www.npmjs.com/package/unixify/v/1.0.0",
-      "https://www.npmjs.com/package/pump/v/3.0.0"
+      "https://www.npmjs.com/package/pump/v/3.0.0",
+      "https://www.npmjs.com/package/unixify/v/1.0.0"
     ],
-    "owner": "mailto://kg@magmacollective.org"
+    "owner": "https://github.com/ameba23"
   },
   "https://www.npmjs.com/package/kappa-record-db/v/0.10.0": {
     "dependents": [
@@ -5355,8 +5355,8 @@
       "https://www.npmjs.com/package/corestore/v/5.8.2",
       "https://www.npmjs.com/package/debug/v/4.3.4",
       "https://www.npmjs.com/package/fast-bitfield/v/1.2.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inspect-custom-symbol/v/1.1.1",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
@@ -5377,8 +5377,8 @@
       "https://www.npmjs.com/package/dat-encoding/v/5.0.2",
       "https://www.npmjs.com/package/debug/v/4.3.4",
       "https://www.npmjs.com/package/fast-bitfield/v/1.2.2",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inspect-custom-symbol/v/1.1.1",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
@@ -5618,8 +5618,8 @@
       "https://www.npmjs.com/package/is-options/v/1.0.2",
       "https://www.npmjs.com/package/nanoiterator/v/1.2.1",
       "https://www.npmjs.com/package/nanoresource/v/1.3.0",
-      "https://www.npmjs.com/package/protocol-buffers/v/4.2.0",
       "https://www.npmjs.com/package/protocol-buffers-encodings/v/1.1.1",
+      "https://www.npmjs.com/package/protocol-buffers/v/4.2.0",
       "https://www.npmjs.com/package/thunky/v/1.1.0",
       "https://www.npmjs.com/package/unixify/v/1.0.0"
     ],
@@ -5652,7 +5652,7 @@
       "https://www.npmjs.com/package/kappa-sparse-query/v/2.0.0"
     ],
     "dependencies": [],
-    "owner": "https://npmjs.com/~substack"
+    "owner": "mailto://stephen.whitmore@gmail.com"
   },
   "https://www.npmjs.com/package/multifeed/v/6.0.0": {
     "dependents": [
@@ -5670,8 +5670,8 @@
     ],
     "dependencies": [
       "https://www.npmjs.com/package/debug/v/4.3.4",
-      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/hypercore-protocol/v/8.0.7",
+      "https://www.npmjs.com/package/hypercore/v/9.12.0",
       "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/mutexify/v/1.4.0",
       "https://www.npmjs.com/package/once/v/1.4.0",
@@ -6181,9 +6181,9 @@
   "https://www.npmjs.com/package/readable-stream/v/1.1.14": {
     "dependencies": [
       "https://www.npmjs.com/package/core-util-is/v/1.0.3",
+      "https://www.npmjs.com/package/inherits/v/2.0.4",
       "https://www.npmjs.com/package/isarray/v/0.0.1",
-      "https://www.npmjs.com/package/string_decoder/v/0.10.31",
-      "https://www.npmjs.com/package/inherits/v/2.0.4"
+      "https://www.npmjs.com/package/string_decoder/v/0.10.31"
     ],
     "owner": "https://github.com/isaacs"
   },
@@ -6442,15 +6442,15 @@
   },
   "https://www.npmjs.com/package/sodium-universal/v/3.1.0": {
     "dependencies": [
-      "https://www.npmjs.com/package/resolve/v/1.22.1",
-      "https://www.npmjs.com/package/sodium-native/v/3.3.0",
-      "https://www.npmjs.com/package/sodium-javascript/v/0.8.0",
       "https://www.npmjs.com/package/blake2b/v/2.1.4",
       "https://www.npmjs.com/package/chacha20-universal/v/1.0.4",
       "https://www.npmjs.com/package/nanoassert/v/2.0.0",
+      "https://www.npmjs.com/package/resolve/v/1.22.1",
       "https://www.npmjs.com/package/sha256-universal/v/1.2.1",
       "https://www.npmjs.com/package/sha512-universal/v/1.2.1",
       "https://www.npmjs.com/package/siphash24/v/1.3.1",
+      "https://www.npmjs.com/package/sodium-javascript/v/0.8.0",
+      "https://www.npmjs.com/package/sodium-native/v/3.3.0",
       "https://www.npmjs.com/package/xsalsa20/v/1.2.0"
     ],
     "owner": "https://github.com/sodium-friends"
@@ -6504,7 +6504,7 @@
       "https://www.npmjs.com/package/artefact-server/v/1.1.1",
       "https://www.npmjs.com/package/artefact-store/v/1.3.0"
     ],
-    "owner": "mailto://cherese.eriepa@outlook.com"
+    "owner": "mailto://andre+npm@staltz.com"
   },
   "https://www.npmjs.com/package/ssb-pataka/v/4.2.0": {
     "dependents": [
@@ -6514,7 +6514,7 @@
     "dependencies": [
       "https://www.npmjs.com/package/@ssb-graphql/main/v/9.5.0"
     ],
-    "owner": "mailto://whimful@gmail.com"
+    "owner": "mailto://bakapita10@gmail.com"
   },
   "https://www.npmjs.com/package/ssb-patchwork/v/3.18.0": {
     "dependents": [],

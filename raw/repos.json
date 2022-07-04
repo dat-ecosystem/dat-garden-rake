@@ -1404,8 +1404,8 @@
     "package": [
       "https://www.npmjs.com/package/ataraxia-transport-streams/v/0.12.0",
       "https://www.npmjs.com/package/ataraxia-tcp/v/0.12.0",
-      "https://www.npmjs.com/package/ataraxia-local/v/0.12.0",
       "https://www.npmjs.com/package/ataraxia-hyperswarm/v/0.12.0",
+      "https://www.npmjs.com/package/ataraxia-local/v/0.12.0",
       "https://www.npmjs.com/package/ataraxia-cli/v/0.12.2"
     ],
     "people": [
@@ -4098,8 +4098,8 @@
   "git+https://github.com/datproject/dat": {
     "package": [
       "https://www.npmjs.com/package/dat/v/14.0.3",
-      "https://www.npmjs.com/package/@jimpick/dat-next/v/13.11.3-18",
-      "https://www.npmjs.com/package/@jimpick/dat-multiwriter-staging/v/13.11.3-15"
+      "https://www.npmjs.com/package/@jimpick/dat-multiwriter-staging/v/13.11.3-15",
+      "https://www.npmjs.com/package/@jimpick/dat-next/v/13.11.3-18"
     ],
     "people": [
       {
@@ -4543,8 +4543,8 @@
     "package": [
       "https://www.npmjs.com/package/dat-node/v/4.0.1",
       "https://www.npmjs.com/package/@pqmcgill/dat-node/v/3.5.22",
-      "https://www.npmjs.com/package/@jimpick/dat-node/v/3.5.11-23",
-      "https://www.npmjs.com/package/@jimpick/dat-node-hyperdb-only/v/3.5.8-4"
+      "https://www.npmjs.com/package/@jimpick/dat-node-hyperdb-only/v/3.5.8-4",
+      "https://www.npmjs.com/package/@jimpick/dat-node/v/3.5.11-23"
     ],
     "people": [
       {
@@ -5967,20 +5967,20 @@
       "https://www.npmjs.com/package/@dxos/cli/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-dxns/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-halo/v/2.12.4",
-      "https://www.npmjs.com/package/@dxos/cli-echo/v/2.19.0",
       "https://www.npmjs.com/package/@dxos/cli-kube/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-echo/v/2.19.0",
       "https://www.npmjs.com/package/@dxos/cli-bot/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-chat/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-mdns/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-mesh/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-mdns/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-app/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-pad/v/2.15.0",
       "https://www.npmjs.com/package/@dxos/cli-console/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-app/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-machine/v/2.0.32",
       "https://www.npmjs.com/package/@dxos/cli-signal/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-ipfs/v/2.20.2",
-      "https://www.npmjs.com/package/@wirelineio/cli-wns/v/1.0.1-beta.16",
-      "https://www.npmjs.com/package/@dxos/cli-wns/v/2.4.15"
+      "https://www.npmjs.com/package/@dxos/cli-wns/v/2.4.15",
+      "https://www.npmjs.com/package/@wirelineio/cli-wns/v/1.0.1-beta.16"
     ],
     "people": [
       {
@@ -15609,8 +15609,8 @@
     "package": [
       "https://www.npmjs.com/package/@synonymdev/slashdrive/v/1.0.0-alpha.1",
       "https://www.npmjs.com/package/slashtags-sdk/v/0.0.0-alpha.2",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-rpc/v/0.1.2",
       "https://www.npmjs.com/package/@synonymdev/slashtag/v/1.0.0-alpha.2",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-rpc/v/0.1.2",
       "https://www.npmjs.com/package/@synonymdev/slashtags-identity/v/0.0.1-alpha.1",
       "https://www.npmjs.com/package/@synonymdev/slashtags-cli/v/1.0.0-alpha.2",
       "https://www.npmjs.com/package/@synonymdev/slashtags-core/v/0.1.2",
