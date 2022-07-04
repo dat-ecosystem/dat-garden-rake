@@ -112,11 +112,25 @@ async function collect (db) {
 }
 
 function extractErrorTasks (tasks) {
-  return Object.values(tasks).filter(task => task.errors).map(task => {
-    const { id, errors, ...rest } = task
-    rest.error = errors.pop()
-    return rest
-  })
+  return Object
+    .values(tasks)
+    .filter(task => task.errors).map(task => {
+      const { id, errors, ...rest } = task
+      rest.error = errors.pop()
+      return rest
+    })
+    .sort((a, b) => {
+      if (a.error > b.error) return 1
+      if (a.error < b.error) return -1
+      if (a.type > b.type) return 1
+      if (a.type < b.type) return -1
+      for (const key of Object.keys(a).sort()) {
+        if (key === 'error' || key === 'type') continue
+        if (a[key] > b[key]) return 1
+        if (a[key] < b[key]) return -1
+      }
+      return 0
+    })
 }
 
 function cleanRepos (repos) {
