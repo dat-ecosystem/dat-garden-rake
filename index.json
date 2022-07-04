@@ -54,7 +54,7 @@
     "valuenetwork.json": "Relationships between projects, other projects and organizations"
   },
   "git": {
-    "commit": "ad559404a376191fb76c17ba6880dbcbff1e4034",
+    "commit": "718705730058abde1c94de5fcb72c75f20418b98",
     "status": "?? node_modules/"
   },
   "maxDepth": 20,

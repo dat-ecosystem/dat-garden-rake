@@ -1403,9 +1403,9 @@
   "git+https://github.com/aholstenson/ataraxia.git": {
     "package": [
       "https://www.npmjs.com/package/ataraxia-transport-streams/v/0.12.0",
-      "https://www.npmjs.com/package/ataraxia-hyperswarm/v/0.12.0",
-      "https://www.npmjs.com/package/ataraxia-tcp/v/0.12.0",
       "https://www.npmjs.com/package/ataraxia-local/v/0.12.0",
+      "https://www.npmjs.com/package/ataraxia-tcp/v/0.12.0",
+      "https://www.npmjs.com/package/ataraxia-hyperswarm/v/0.12.0",
       "https://www.npmjs.com/package/ataraxia-cli/v/0.12.2"
     ],
     "people": [
@@ -5961,26 +5961,26 @@
   },
   "git+https://github.com/dxos/cli": {
     "package": [
+      "https://www.npmjs.com/package/@dxos/cli-data/v/2.18.4",
+      "https://www.npmjs.com/package/@dxos/cli-party/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-core/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-dxns/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-halo/v/2.12.4",
       "https://www.npmjs.com/package/@dxos/cli-echo/v/2.19.0",
-      "https://www.npmjs.com/package/@dxos/cli-party/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-kube/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-bot/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-data/v/2.18.4",
-      "https://www.npmjs.com/package/@dxos/cli-core/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-dxns/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-mesh/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-chat/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-app/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-ipfs/v/2.20.2",
-      "https://www.npmjs.com/package/@wirelineio/cli-wns/v/1.0.1-beta.16",
       "https://www.npmjs.com/package/@dxos/cli-mdns/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-signal/v/2.20.2",
-      "https://www.npmjs.com/package/@dxos/cli-console/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-chat/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-pad/v/2.15.0",
+      "https://www.npmjs.com/package/@dxos/cli-console/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-app/v/2.20.2",
       "https://www.npmjs.com/package/@dxos/cli-machine/v/2.0.32",
-      "https://www.npmjs.com/package/@dxos/cli-wns/v/2.4.15"
+      "https://www.npmjs.com/package/@dxos/cli-mesh/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-ipfs/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-signal/v/2.20.2",
+      "https://www.npmjs.com/package/@dxos/cli-wns/v/2.4.15",
+      "https://www.npmjs.com/package/@wirelineio/cli-wns/v/1.0.1-beta.16"
     ],
     "people": [
       {
@@ -6598,8 +6598,8 @@
   },
   "git+https://github.com/feross/safe-buffer": {
     "package": [
-      "https://www.npmjs.com/package/safe-buffer/v/5.1.2",
-      "https://www.npmjs.com/package/safe-buffer/v/5.2.1"
+      "https://www.npmjs.com/package/safe-buffer/v/5.2.1",
+      "https://www.npmjs.com/package/safe-buffer/v/5.1.2"
     ],
     "people": [
       {
@@ -10770,8 +10770,8 @@
   },
   "git+https://github.com/mafintosh/hypercore-crypto": {
     "package": [
-      "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2",
-      "https://www.npmjs.com/package/hypercore-crypto/v/3.3.0"
+      "https://www.npmjs.com/package/hypercore-crypto/v/3.3.0",
+      "https://www.npmjs.com/package/hypercore-crypto/v/2.3.2"
     ],
     "people": [
       {
@@ -12583,8 +12583,8 @@
   },
   "git+https://github.com/mafintosh/uint64be": {
     "package": [
-      "https://www.npmjs.com/package/uint64be/v/3.0.0",
-      "https://www.npmjs.com/package/uint64be/v/2.0.2"
+      "https://www.npmjs.com/package/uint64be/v/2.0.2",
+      "https://www.npmjs.com/package/uint64be/v/3.0.0"
     ],
     "people": [
       {
@@ -13011,8 +13011,8 @@
   },
   "git+https://github.com/nodejs/readable-stream": {
     "package": [
-      "https://www.npmjs.com/package/readable-stream/v/2.3.7",
-      "https://www.npmjs.com/package/readable-stream/v/3.6.0"
+      "https://www.npmjs.com/package/readable-stream/v/3.6.0",
+      "https://www.npmjs.com/package/readable-stream/v/2.3.7"
     ],
     "people": [
       {
@@ -13205,8 +13205,8 @@
   },
   "git+https://github.com/nodejs/string_decoder": {
     "package": [
-      "https://www.npmjs.com/package/string_decoder/v/1.1.1",
-      "https://www.npmjs.com/package/string_decoder/v/1.3.0"
+      "https://www.npmjs.com/package/string_decoder/v/1.3.0",
+      "https://www.npmjs.com/package/string_decoder/v/1.1.1"
     ],
     "people": [
       {
@@ -15608,17 +15608,17 @@
   "git+https://github.com/synonymdev/slashtags": {
     "package": [
       "https://www.npmjs.com/package/@synonymdev/slashdrive/v/1.0.0-alpha.1",
-      "https://www.npmjs.com/package/@synonymdev/slashtag/v/1.0.0-alpha.2",
       "https://www.npmjs.com/package/slashtags-sdk/v/0.0.0-alpha.2",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-identity/v/0.0.1-alpha.1",
       "https://www.npmjs.com/package/@synonymdev/slashtags-rpc/v/0.1.2",
+      "https://www.npmjs.com/package/@synonymdev/slashtag/v/1.0.0-alpha.2",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-identity/v/0.0.1-alpha.1",
       "https://www.npmjs.com/package/@synonymdev/slashtags-cli/v/1.0.0-alpha.2",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-sdk/v/1.0.0-alpha.5",
-      "https://www.npmjs.com/package/@synonymdev/slashauth/v/1.0.0-alpha.0",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-auth/v/0.3.2",
       "https://www.npmjs.com/package/@synonymdev/slashtags-core/v/0.1.2",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-accounts/v/0.0.1",
-      "https://www.npmjs.com/package/@synonymdev/slashtags-actions/v/0.1.2"
+      "https://www.npmjs.com/package/@synonymdev/slashauth/v/1.0.0-alpha.0",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-sdk/v/1.0.0-alpha.5",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-auth/v/0.3.2",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-actions/v/0.1.2",
+      "https://www.npmjs.com/package/@synonymdev/slashtags-accounts/v/0.0.1"
     ],
     "people": [
       {
@@ -16416,8 +16416,8 @@
   },
   "git+https://github.com/zeit/ms": {
     "package": [
-      "https://www.npmjs.com/package/ms/v/2.0.0",
-      "https://www.npmjs.com/package/ms/v/2.1.2"
+      "https://www.npmjs.com/package/ms/v/2.1.2",
+      "https://www.npmjs.com/package/ms/v/2.0.0"
     ],
     "people": [
       {
