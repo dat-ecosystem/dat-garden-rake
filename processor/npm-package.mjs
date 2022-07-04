@@ -51,18 +51,36 @@ async function normalizePackage (api, version, pkg) {
     value: {
       name: pkg.name,
       version,
-      description: pkg.description,
-      keywords: pkg.keywords,
-      homepage: pkg.homepage,
-      bugs: pkg.bugs?.url || pkg.bugs,
-      license: pkg.license,
+      description: pkg.description ?? null,
+      keywords: toArray(pkg.keywords).sort(),
+      homepage: pkg.homepage ?? null,
+      bugs: pkg.bugs?.url ?? pkg.bugs ?? null,
+      license: pkg.license ?? 'UNLICENSED',
       time: pkg.time?.[version],
       people,
       dependencies: await normalizeDependencies(api, pkg.dependencies || {}),
-      funding: pkg.funding,
+      funding: normalizeFunding(pkg.funding),
       // Make sure that pkg.repository is a normalized string for future lookup
       repository: normalizeRepository(pkg.repository)
     },
     batch
   }
+}
+
+function normalizeFunding (funding) {
+  funding = toArray(funding)
+  return funding
+    .map(entry => {
+      if (typeof entry === 'string') {
+        return { url: entry }
+      }
+      return entry
+    })
+    .sort((a, b) => {
+      if (a.url > b.url) return 1
+      if (a.url < b.url) return -1
+      if (a.type < b.type) return 1
+      if (a.type > b.type) return -1
+      return 0
+    })
 }
