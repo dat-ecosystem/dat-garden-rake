@@ -34,7 +34,6 @@ jobs:
       timeout-minutes: 350
       run: |
         node bin/dat-garden-rake \
-          --prefer-cache \
           --max-depth=20 \
           --skip-times \
           --out-mode=override \
