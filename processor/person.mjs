@@ -1,6 +1,7 @@
+import { fetchNpmJSDom } from '../lib/npm.mjs'
 import { isGithubUser, isGitlabUser, isNpmUser, normalizeGitlabUser, parseGithubUser, parseGitlabUser } from '../lib/people.mjs'
 import { fetchGithubAPI, fetchGitlabAPI } from '../lib/repo.mjs'
-import { addURLToError, createRateLimiter, fetchJSDom, predictableObj, RateLimitError, resourceTaskProcessor } from '../lib/util.mjs'
+import { plusMinusInt, predictableObj, resourceTaskProcessor } from '../lib/util.mjs'
 
 export const person = resourceTaskProcessor({
   type: 'person',
@@ -25,9 +26,13 @@ export const person = resourceTaskProcessor({
   }
 })
 
+const maxUserAge = () => plusMinusInt(1000 * 60 * 60 * 24 * 30, 0.05) // 1 month
+
 async function fetchGithubUser (api, url) {
   const login = parseGithubUser(url)
-  const user = await fetchGithubAPI(api, `users/${login}`)
+  const user = await fetchGithubAPI(api, `users/${login}`, {
+    maxAge: maxUserAge()
+  })
   return {
     value: predictableObj({
       github_url: url,
@@ -47,29 +52,21 @@ async function fetchGithubUser (api, url) {
 
 async function fetchGitlabUser (api, url) {
   // https://docs.gitlab.com/ee/api/users.html#single-user
-  const user = await fetchGitlabAPI(api, `users/${encodeURIComponent(parseGitlabUser(url))}`)
+  const user = await fetchGitlabAPI(api, `users/${encodeURIComponent(parseGitlabUser(url))}`, {
+    maxAge: maxUserAge()
+  })
   return {
     value: normalizeGitlabUser(user),
     batch: []
   }
 }
+
 const twitterPrefix = 'https://twitter.com/'
 
-// 50 per second guessed through experiments...
-const rateLimiter = createRateLimiter(50, 60000)
-async function fetchNpmJSDom (api, url) {
-  try {
-    return await fetchJSDom(api, url, { rateLimiter })
-  } catch (err) {
-    if (err.res?.status === 429) {
-      throw addURLToError(url, new RateLimitError(Date.now() + 5000))
-    }
-    throw err
-  }
-}
-
 async function fetchNpmUser (api, url) {
-  const dom = await fetchNpmJSDom(api, url)
+  const dom = await fetchNpmJSDom(api, url, {
+    maxAge: maxUserAge()
+  })
   const { document } = dom.window
   const $name = document.querySelector('#main h2')
   const $el = $name?.parentNode?.parentNode

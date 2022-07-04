@@ -1,6 +1,6 @@
 import { githubUserURL, gitlabGroupURL } from '../lib/people.mjs'
 import { fetchGitlabAPI, getGithubOwner, getGitlabRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
-import { resourceTaskProcessor } from '../lib/util.mjs'
+import { plusMinusInt, resourceTaskProcessor } from '../lib/util.mjs'
 import { person } from './person.mjs'
 
 export const repoOwner = resourceTaskProcessor({
@@ -24,10 +24,14 @@ export const repoOwner = resourceTaskProcessor({
   }
 })
 
+const maxOwnerAge = () => plusMinusInt(1000 * 60 * 60 * 24 * 30 * 2, 0.05) // two months seems good
+
 async function loadGitlabOwner (api, task) {
   const { repoURL } = task
   const glRepo = getGitlabRepo(repoURL)
-  const repo = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}`)
+  const repo = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}`, {
+    maxAge: maxOwnerAge()
+  })
   if (!repo.owner) {
     return {
       value: '<unknown>',
@@ -36,7 +40,9 @@ async function loadGitlabOwner (api, task) {
   }
   const groupId = repo.owner.id
   // https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
-  const group = await fetchGitlabAPI(api, `groups/${encodeURIComponent(groupId)}`)
+  const group = await fetchGitlabAPI(api, `groups/${encodeURIComponent(groupId)}`, {
+    maxAge: maxOwnerAge()
+  })
   return {
     value: {
       gitlab_url: gitlabGroupURL(groupId),

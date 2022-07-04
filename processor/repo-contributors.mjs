@@ -1,7 +1,7 @@
 import pMap from 'p-map'
 import { githubUserURL, gitlabUserURL, normalizeGitlabUser } from '../lib/people.mjs'
 import { fetchGithubAPI, fetchGitlabAPI, getGithubRepo, getGitlabRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
-import { getOrCreate, resourceTaskProcessor } from '../lib/util.mjs'
+import { getOrCreate, plusMinusInt, resourceTaskProcessor } from '../lib/util.mjs'
 import { person } from './person.mjs'
 
 export const repoContributors = resourceTaskProcessor({
@@ -25,11 +25,15 @@ export const repoContributors = resourceTaskProcessor({
   }
 })
 
+const maxContributorAge = () => plusMinusInt(1000 * 60 * 60 * 24 * 7, 0.05) // One week
+
 async function loadGitlabContributors (api, task, repoURL) {
   const glRepo = getGitlabRepo(repoURL)
   // TODO: paging
   // https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project
-  const members = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}/members/all?per_page=100&page=1`)
+  const members = await fetchGitlabAPI(api, `projects/${encodeURIComponent(glRepo)}/members/all?per_page=100&page=1`, {
+    maxAge: maxContributorAge()
+  })
   const result = {
     value: [],
     batch: []
@@ -49,7 +53,9 @@ async function loadGitlabContributors (api, task, repoURL) {
 
 async function loadGithubContributors (api, repoURL) {
   const ghRepo = getGithubRepo(repoURL)
-  const contributors = await fetchGithubAPI(api, `repos/${ghRepo}/contributors`)
+  const contributors = await fetchGithubAPI(api, `repos/${ghRepo}/contributors`, {
+    maxAge: maxContributorAge()
+  })
   const result = {
     value: [],
     batch: []

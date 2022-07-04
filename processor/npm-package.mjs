@@ -1,4 +1,4 @@
-import { normalizeDependencies, normalizeRepository, npmInfo, parseNpmUrl } from '../lib/npm.mjs'
+import { normalizeDependencies, normalizeRepository, loadPackumentCached, parseNpmUrl } from '../lib/npm.mjs'
 import { normalizePeople } from '../lib/people.mjs'
 import { createRepoTasks } from '../lib/repo.mjs'
 import { resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
@@ -14,8 +14,7 @@ export const npmPackage = resourceTaskProcessor({
   },
   async create (api, _db, { url }) {
     const { name, version } = parseNpmUrl(url)
-    api.log(`Loading NPM package ${name}@${version}`)
-    const { value: pkg, batch } = await normalizePackage(api, version, await npmInfo(`${name}@${version}`, version))
+    const { value: pkg, batch } = await normalizePackage(api, version, await loadPackumentCached(api, name, version))
     batch.push({ type: 'put', sublevel: api.packages, key: url, value: pkg })
     if (pkg.repository) {
       batch.push(

@@ -1,5 +1,5 @@
 import { createNpmUrl, normalizeNPM, parseNpmUrl } from '../lib/npm.mjs'
-import { fetchJSDom, resourceTaskProcessor } from '../lib/util.mjs'
+import { fetchJSDom, plusMinusInt, resourceTaskProcessor } from '../lib/util.mjs'
 import { npmPackage } from './npm-package.mjs'
 
 function depUrl (name) {
@@ -16,7 +16,9 @@ export const npmDependents = resourceTaskProcessor({
     }
   },
   async create (api, _db, { name, version, depth, page, url }) {
-    const dom = await fetchJSDom(api, url)
+    const dom = await fetchJSDom(api, url, {
+      maxAge: plusMinusInt(1000 * 60 * 60 * 24 * 7, 0.05) // One week seems good
+    })
     const { document } = dom.window
     const dependents = []
     const batch = []

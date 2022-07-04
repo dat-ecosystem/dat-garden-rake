@@ -1,6 +1,6 @@
 import { normalizeNPM } from '../lib/npm.mjs'
 import { createRepoTasks, getGithubRepo, githubRepoURL, gitlabRepoURL } from '../lib/repo.mjs'
-import { fetchJSDom, resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
+import { fetchJSDom, plusMinusInt, resourceTaskProcessor, timeRandomID } from '../lib/util.mjs'
 import { dependentInfo } from './dependent-info.mjs'
 
 export const repoDependents = resourceTaskProcessor({
@@ -60,7 +60,8 @@ async function verifyGithubDependent (api, dependentURL, repoURL) {
   //
   const ghRepo = getGithubRepo(dependentURL)
   const url = `https://github.com/${ghRepo}/network/dependencies`
-  const jsdom = await fetchJSDom(api, url)
+  // Once a dependency is found/established it
+  const jsdom = await fetchJSDom(api, url, { expires: 'never' })
   const { document } = jsdom.window
   const el = document.getElementById('dependencies')
   if (!el) {
@@ -90,7 +91,7 @@ function findDependency (el, repoURL, url) {
 }
 
 async function loadGithubDependentsPage (api, url) {
-  const jsdom = await fetchJSDom(api, url)
+  const jsdom = await fetchJSDom(api, url, { maxAge: plusMinusInt(1000 * 60 * 60 * 24 * 14, 0.05) /* 2 weeks */ })
   const { document } = jsdom.window
   const el = document.getElementById('dependents')
   const result = {
