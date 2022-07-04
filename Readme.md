@@ -14,9 +14,9 @@ Run the dat-garden-rake like below:
 ```bash
 $ dat-garden-rake [...options]
 
---reset ............. clears ALL current data!
---restart ........... clears all tasks but keeps the data
---retry ............. removes all errors from tasks
+--force-restart ..... Force restarting the run
+--skip-restart ...... Never restart the run
+--retry ............. removes all errors from existing tasks
 --help, -h .......... show this help
 --out, -o ........... output folder (default=./out)
 --state, -s ......... state folder (default=./state)

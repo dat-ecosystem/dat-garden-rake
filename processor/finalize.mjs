@@ -70,6 +70,7 @@ async function exportJSON (api, cwd, opts) {
     }
   }
   if (opts.skipTimes) {
+    delete index.end
     delete index.exported
     delete index.lastModified
     delete index.start

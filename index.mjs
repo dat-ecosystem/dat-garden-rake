@@ -15,29 +15,6 @@ export async function scrape (opts = {}) {
   }
   const cacheDb = new Level(cache ?? 'cache')
   const db = new Level(state ?? 'state')
-  if (opts.reset) {
-    log('DELETING ALL STATE DATA')
-    await db.clear()
-    log('deleted.')
-  } else if (opts.restart) {
-    log('Clearing tasks and meta information')
-    await db.sublevel('tasks').clear()
-    await db.sublevel('meta').clear()
-    await db.sublevel('task-for-resource').clear()
-    log('cleared.')
-  } else if (opts.retry) {
-    log('Removing error state from tasks')
-    const batch = []
-    const tasks = db.sublevel('tasks', { valueEncoding: 'json' })
-    for await (const [key, task] of tasks.iterator()) {
-      if (task.errors) {
-        delete task.errors
-        batch.push({ type: 'put', sublevel: tasks, key, value: task })
-      }
-    }
-    await db.batch(batch)
-    log('all tasks error free')
-  }
   if (!opts.token?.gitlab) {
     throw new Error('Gitlab token missing! Did you set the GITLAB_TOKEN environment variable?')
   }

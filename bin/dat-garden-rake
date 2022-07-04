@@ -21,10 +21,10 @@ const { values } = parseArgs({
       type: 'boolean',
       short: 'h'
     },
-    reset: {
+    'force-restart': {
       type: 'boolean'
     },
-    restart: {
+    'skip-restart': {
       type: 'boolean'
     },
     retry: {
@@ -81,9 +81,9 @@ const { values } = parseArgs({
 if (values.help) {
   console.log(`dat-garden-rake [...options]
 
---reset ............. clears ALL current data!
---restart ........... clears all tasks but keeps the data
---retry ............. removes all errors from tasks
+--force-restart ..... Force restarting the run
+--skip-restart ...... Never restart the run
+--retry ............. removes all errors from existing tasks
 --help, -h .......... show this help
 --out, -o ........... output folder (default=./out)
 --state, -s ......... state folder (default=./state)
@@ -123,8 +123,8 @@ const options = {
   state: values.state ?? 'state',
   cache: values.cache ?? 'cache',
   preferCache: values['prefer-cache'] ?? false,
-  reset: values.reset ?? false,
-  restart: values.restart ?? false,
+  forceRestart: values['force-restart'] ?? false,
+  skipRestart: values['skip-restart'] ?? false,
   retry: values.retry ?? false,
   quiet: values.quiet ?? false,
   maxRetries: coerceNumber(values['max-retries'], 2),
