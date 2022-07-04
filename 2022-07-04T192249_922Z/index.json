@@ -1,0 +1,66 @@
+{
+  "blessed": {
+    "git+https://github.com/hypercore-protocol/hypercore-next": {
+      "type": "repo",
+      "url": "git+https://github.com/hypercore-protocol/hypercore-next"
+    },
+    "https://www.npmjs.com/package/@hyperswarm/dht": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/@hyperswarm/dht/v/6.0.2"
+    },
+    "https://www.npmjs.com/package/@hyperswarm/dht-relay": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/@hyperswarm/dht-relay/v/0.3.0"
+    },
+    "https://www.npmjs.com/package/@hyperswarm/secret-stream": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/@hyperswarm/secret-stream/v/6.0.0"
+    },
+    "https://www.npmjs.com/package/autobase": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/autobase/v/0.0.0"
+    },
+    "https://www.npmjs.com/package/hyperbee": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/hyperbee/v/1.10.1"
+    },
+    "https://www.npmjs.com/package/hypercore": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/hypercore/v/9.12.0"
+    },
+    "https://www.npmjs.com/package/hypercore-strong-link": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/hypercore-strong-link/v/3.0.0"
+    },
+    "https://www.npmjs.com/package/hyperdrive": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/hyperdrive/v/10.21.0"
+    },
+    "https://www.npmjs.com/package/hyperswarm": {
+      "type": "package",
+      "url": "https://www.npmjs.com/package/hyperswarm/v/4.1.0"
+    }
+  },
+  "concurrency": 10,
+  "crawler": "dat-garden-rake@1.0.0",
+  "end": "2022-07-04T19:23:43.301Z",
+  "exported": "2022-07-04T19:23:43.939Z",
+  "files": {
+    "index.json": "(this file) Information about the run (start, blessed input, etc.)",
+    "organizations.json": "All users/organizations found for projects (combined/normalized)",
+    "projects.json": "All projects (repos or npm packages) found",
+    "raw/errors.json": "Errors that occurred during the run",
+    "raw/packages.json": "NPM package related information collected during the run",
+    "raw/people.json": "Lookup table of organizations or individuals linked in packages/repos",
+    "raw/repos.json": "Repository related information collected during the run",
+    "valuenetwork.json": "Relationships between projects, other projects and organizations"
+  },
+  "git": {
+    "commit": "c5ebc68681e155ac94b9bad411d48b875c3ae380",
+    "status": "?? node_modules/"
+  },
+  "lastModified": "2022-07-04T19:23:43.300Z",
+  "maxDepth": 20,
+  "maxRetries": 2,
+  "start": "2022-07-04T19:22:49.922Z"
+}
